@@ -1,0 +1,373 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* base elements */
+h1 {
+    color: #fff;
+    @apply text-xl lg:text-2xl xl:text-3xl;
+  }
+  
+  h2 {
+    color: #fff;
+    @apply text-lg lg:text-xl xl:text-2xl;
+  }
+  
+  h3 {
+    font-family: "Montserrat", sans-serif;
+  }
+  
+  p {
+    color: #c9c9c9;
+  }
+  
+  body {
+    font-family: "Inter", sans-serif;
+    /* @apply bg-gradient-to-l from-[#0f0c29] to-[#302b63] to-[#24243e]; */
+    background: linear-gradient(to right, #ff9292, #ffab60, #d5ff60, #70ffec);
+  
+  }
+  
+  span {
+    font-family: "Bubblegum Sans", sans-serif;
+    @apply tracking-wider 
+  }
+  
+  ul,
+  li {
+    list-style-type: none;
+  }
+  
+/* base elements */
+
+
+
+/* buttons */
+.btn {
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    height: 38px;
+    padding-left: 0.875rem;
+    padding-right: 0.875rem;
+  }
+  .btn,
+  .btn-lg,
+  .btn-xl,
+  .btn-2xl {
+    --btn-inner-shadow: inset 0 -3px 6px -2px #e7e5fa;
+    --btn-inner-shadow-active: inset 0 0 6px #ddd6fe;
+    --btn-shadow: 0 0 transparent;
+    --btn-shadow-active: 0 0 transparent;
+    --btn-text-color: #42376b;
+    --btn-text-color-active: #6d28d9;
+    --btn-bg-color: white;
+    --btn-bg-color-active: #f9f9fe;
+    --btn-border-color: rgb(91 33 182 / 0.125);
+    --btn-border-color-active: rgb(167 139 250 / 0.4);
+    --btn-ring-color: rgb(221 214 254 / 0.75);
+    align-items: center;
+    background-color: var(--btn-bg-color);
+    border-color: var(--btn-border-color);
+    border-width: 1px;
+    box-shadow: var(--btn-inner-shadow), var(--btn-shadow);
+    color: var(--btn-text-color);
+    display: inline-flex;
+    gap: 0.35rem;
+    font-weight: 500;
+    justify-content: center;
+    letter-spacing: 0em;
+    outline: none !important;
+    white-space: nowrap;
+    transition: 0.2s all;
+  }
+  
+  .btn-purple {
+    --btn-bg-color: #7c3aed;
+    --btn-bg-color-active: #6d28d9;
+    --btn-border-color: rgb(255 255 255 / 0);
+    --btn-border-color-active: rgb(255 255 255 / 0);
+    --btn-inner-shadow: inset 0 0 0 1px rgb(221 214 254 / 0.25);
+    --btn-inner-shadow-active: inset 0 0 0 1px rgb(221 214 254 / 0.25);
+    --btn-ring-color: rgb(255 255 255 / 0.1);
+    --btn-text-color: white;
+    --btn-text-color-active: white;
+    text-shadow: 0px 1px 3px var(--tw-text-shadow-color);
+    background-image: linear-gradient(
+      to bottom right,
+      #a02be4,
+      transparent,
+      #4f46e5
+    );
+    background-clip: padding-box;
+  }
+  
+  .btn-translucent {
+    --btn-bg-color: rgb(255 255 255 / 0);
+    --btn-bg-color-active: rgb(255 255 255 / 0.1);
+    --btn-border-color: rgb(255 255 255 / 0.25);
+    --btn-border-color-active: rgb(255 255 255 / 0.35);
+    --btn-inner-shadow: 0 0 transparent;
+    --btn-inner-shadow-active: 0 0 transparent;
+    --btn-ring-color: rgb(255 255 255 / 0.1);
+    --btn-text-color: white;
+    --btn-text-color-active: white;
+    background-image: linear-gradient(
+      to bottom right,
+      rgb(255 255 255 / 0.075),
+      rgb(255 255 255 / 0.075),
+      rgb(255 255 255 / 0.2)
+    );
+  }
+  
+  .btn-translucent:hover {
+    color: var(--btn-text-color-active);
+    background-color: var(--btn-bg-color-active);
+    border-color: var(--btn-border-color-active);
+    box-shadow: var(--btn-inner-shadow-active), var(--btn-shadow-active);
+  }
+  
+  .btn-purple:hover {
+    color: var(--btn-text-color-active);
+    background-color: var(--btn-bg-color-active);
+    border-color: var(--btn-border-color-active);
+    box-shadow: var(--btn-inner-shadow-active), var(--btn-shadow-active);
+  }
+
+  button:hover {
+    @apply scale-105 cursor-pointer
+  }
+  
+
+
+  .glow-on-hover {
+    width: 110px;
+    height: 50px;
+    border: none;
+    outline: none;
+    color: #fff;
+    background: #111;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5), 4px 4px 10px rgba(0, 0, 0, 0.2);
+    @apply tracking-wider
+  }
+  
+  .glow-on-hover:before {
+    content: '';
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    position: absolute;
+    top: -2px;
+    left:-2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+  }
+  
+  .glow-on-hover:active {
+    color: #000
+  }
+  
+  .glow-on-hover:active:after {
+    background: transparent;
+  }
+  
+  .glow-on-hover:hover:before {
+    opacity: 1;
+  }
+  
+  .glow-on-hover:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #4158D0;
+    background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+    
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+  }
+  
+  @keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
+  }
+  
+  /* glow button */
+
+
+/* buttons */
+
+
+/* game css */
+.game-area {
+    background-image: url("https://img.freepik.com/free-vector/neural-network-illustration_53876-80572.jpg?w=826&t=st=1714240993~exp=1714241593~hmac=94962e4667f7588ba2b4dbb2f8948fec3b1069d19c5ae05057c586cd19886f75");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100;
+    width: 100%;
+    max-width: 800px;
+    height: 75vh;
+    max-height: 600px;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid black;
+    border-radius: 8px;
+  }
+  
+  @media (max-width: 768px) {
+    .game-area {
+      width: 100%;
+      height: 600px;
+    }
+    .balloon {
+      width: 20vw;
+      height: 20vw;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .game-area {
+      width: 100%;
+      height: 600px;
+    }
+    .balloon {
+      width: 15vw;
+      height: 15vw;
+    }
+  }
+  .start-screen,
+  .game-over {
+    width: 90%;
+    max-width: 400px;
+  }
+  
+  .balloon {
+    transition: bottom 0.2s ease-out, left 0.2s ease-out;
+    position: absolute;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    font-size: 14px;
+    width: 10vw;
+    height: 10vw;
+    max-width: 60px;
+    max-height: 60px;
+    border-radius: 50%;
+    background-color: blue;
+  }
+  
+  @media (max-width: 768px) {
+    .balloon {
+      width: 14vw;
+      height: 14vw;
+      max-width: 50px;
+      max-height: 50px;
+    }
+  
+    .balloon {
+      width: 60px;
+      height: 60px;
+    }
+  
+    .game-area {
+      flex-direction: column;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .balloon {
+      width: 18vw;
+      height: 18vw;
+      max-width: 40px;
+      max-height: 40px;
+    }
+  }
+  
+  .game-area {
+    max-width: 800px;
+    max-height: 600px;
+    margin: 0 auto;
+  }
+  
+  .balloon {
+    max-width: 100px;
+    max-height: 100px;
+  }
+  
+  .logo {
+    box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.5);
+    filter: drop-shadow(10px 10px 5px rgba(0, 0, 0, 0.5));
+  }
+  
+  button {
+    box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.5);
+    filter: drop-shadow(10px 10px 5px rgba(0, 0, 0, 0.5));
+  }
+  
+  img {
+    filter: drop-shadow(10px 10px 5px rgba(0, 0, 0, 0.5));
+  
+  }
+  
+  img.filter-blue{
+    filter: drop-shadow(10px 10px 5px rgba(0, 0, 0, 0.5));
+    -moz-box-shadow: 0 0 25px #fff;
+    -webkit-box-shadow: 0 0 25px #0ef;
+            box-shadow: 0 0 25px #0ef;
+  }
+/* game css */
+
+/* welcome page bg */
+.bg-welcomeRobot {
+    background-image: url("/teknoloji.gif");
+    background-repeat: no-repeat;
+    width: 100%;
+    background-size: cover;
+    height: 100%;
+  
+    overflow-y: hidden;
+  }
+/* welcome page bg */
+
+/* home robot gif */
+.prompt-gif {
+    background-image: url("/robot-running.gif");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+
+
+/* home robot gif */
+
+
+/* home bg */
+.bg-skyWallpaper {
+    background-image: url("/bg-wallpaper3.jpg");
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-attachment: fixed; 
+  }
+/* home bg */
