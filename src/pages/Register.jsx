@@ -65,10 +65,10 @@ const Register = () => {
       <div className=" mt-4 px-4 md:px-0 md:mt-32 items-center justify-center bg-login-image relative container mx-auto text-white">
         <Toaster position="top-center" reverseOrder={false} />
         <form
-          className="flex flex-col mx-auto border text-white shadow-xl  border-gray-700 my-24 max-w-3xl w-full rounded-xl p-7"
+          className="flex flex-col mx-auto border text-black shadow-xl  border-gray-700 my-24 max-w-3xl w-full rounded-xl p-7"
           onSubmit={formik.handleSubmit}
         >
-          <h1 className="mx-auto text-3xl mb-4 text-white ">Kayıt Formu</h1>
+          <h1 className="mx-auto text-3xl mb-4 text-black ">Kayıt Formu</h1>
 
           <div className="flex flex-col justify-center mb-4 relative">
             <div className="absolute -top-48 -right-8 -z-2">
@@ -88,7 +88,7 @@ const Register = () => {
             </span>
             <a
               onClick={handleGoogleSignIn}
-              className="border flex cursor-pointer justify-center items-center gap-4 h-10  text-white  hover:bg-black/20 duration-300"
+              className="border flex cursor-pointer justify-center items-center gap-4 h-10  text-black  hover:bg-black/20 duration-300"
             >
               <FcGoogle size={24} />
               Google ile Kayıt Ol
@@ -161,7 +161,7 @@ const Register = () => {
             />
             <label htmlFor="acceptedTerms">
               <span className="text-gray-500">
-                <a href="/gizlilik_sozlesmesi" className="text-white mr-1">
+                <a href="/gizlilik_sozlesmesi" className="text-black mr-1">
                   Sözleşmeyi
                 </a>
                 okudum ve onaylıyorum.
@@ -188,7 +188,7 @@ const Register = () => {
             <p className="text-[14px] text-gray-400 text-center">
               Hesabınız var mı?
               <a
-                className="text-center ml-1 text-white w-fit mx-auto"
+                className="text-center ml-1 text-black w-fit mx-auto"
                 href="/login"
               >
                 Şimdi giriş yapın.

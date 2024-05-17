@@ -267,7 +267,7 @@ function Game() {
   }
 
   return (
-    <div className=" ">
+    <div className=" h-full">
       <div
         id="game-area"
         className="game-area  relative overflow-hidden border-2 border-black z-30 rounded"

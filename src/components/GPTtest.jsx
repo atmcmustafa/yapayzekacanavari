@@ -198,7 +198,7 @@ const GPTtest = () => {
   }
 
   return (
-    <div className="relative overflow-hidden w-full">
+    <div className="relative overflow-hidden w-full h-full">
       <div
         id="gpt-test"
         className="gpt-test container mx-auto px-4 md:px-0 text-white max-w-5xl xl:max-w-7xl w-full lg:w-[600px] xl:w-[800px] "

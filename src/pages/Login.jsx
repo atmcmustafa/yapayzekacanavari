@@ -66,10 +66,10 @@ const Login = () => {
       <div className=" mt-4 px-4 md:px-0 md:mt-32 items-center justify-center bg-login-image relative container mx-auto text-white">
         <Toaster position="top-center" reverseOrder={false} />
         <form
-          className="flex flex-col mx-auto border text-white shadow-xl  border-gray-700 my-24 max-w-3xl w-full rounded-xl p-7"
+          className="flex flex-col mx-auto border text-black shadow-xl  border-gray-700 my-24 max-w-3xl w-full rounded-xl p-7"
           onSubmit={formik.handleSubmit}
         >
-          <h1 className="mx-auto text-3xl mb-4 text-white">Giriş Yap</h1>
+          <h1 className="mx-auto text-3xl mb-4 text-black">Giriş Yap</h1>
 
           <div className="flex flex-col justify-center mb-4 relative ">
             <div className="absolute -top-44 -right-12 -z-2">
@@ -89,7 +89,7 @@ const Login = () => {
             </span>
             <a
               onClick={handleGoogleSignIn}
-              className="border cursor-pointer flex justify-center items-center gap-4 h-10  text-white  hover:bg-black/20 duration-300"
+              className="border cursor-pointer flex justify-center items-center gap-4 h-10  text-black  hover:bg-black/20 duration-300"
             >
               <FcGoogle size={24} />
               Google ile Giriş Yap
@@ -167,7 +167,7 @@ const Login = () => {
             <p className="text-[14px] text-gray-400 text-center ">
               Hesabınız yok mu?
               <a
-                className="text-center ml-1 text-white w-fit mx-auto"
+                className="text-center ml-1 text-black w-fit mx-auto"
                 href="/register"
               >
                 Şimdi kaydolun.

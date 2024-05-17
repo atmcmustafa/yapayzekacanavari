@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap');
-
+@import url('https://fonts.cdnfonts.com/css/tr-kids');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -22,6 +22,10 @@ h1 {
     font-family: "Montserrat", sans-serif;
   }
   
+h6 {
+  font-family: 'TR Kids', sans-serif;
+}
+
   p {
     color: #c9c9c9;
   }
@@ -29,12 +33,24 @@ h1 {
   body {
     font-family: "Inter", sans-serif;
     /* @apply bg-gradient-to-l from-[#0f0c29] to-[#302b63] to-[#24243e]; */
-    background: linear-gradient(to right, #ff9292, #ffab60, #d5ff60, #70ffec);
+
   
+  }
+
+  /* .bg-header {
+    background: linear-gradient(0deg, #fff, #9aefef);
+  } */
+  /* .bg-footer {
+    background: linear-gradient(180deg, #fff, #9aefef);
+  } */
+
+  .bg-layer {
+    background: linear-gradient(0deg, #fff, #9aefef);
   }
   
   span {
-    font-family: "Bubblegum Sans", sans-serif;
+    /* font-family: "Bubblegum Sans", sans-serif; */
+    font-family: 'TR Kids', sans-serif;
     @apply tracking-wider 
   }
   
@@ -339,22 +355,68 @@ h1 {
 
 /* welcome page bg */
 .bg-welcomeRobot {
-    background-image: url("/teknoloji.gif");
-    background-repeat: no-repeat;
-    width: 100%;
-    background-size: cover;
-    height: 100%;
-  
-    overflow-y: hidden;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 100vw;
+  height: 100vh;
+  overflow-y: hidden;
+}
+
+/* Desktop view */
+@media (min-width: 1025px) {
+  .bg-welcomeRobot {
+      background-image: url("/desktop_resized.png");
   }
+}
+
+/* Tablet view */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .bg-welcomeRobot {
+      background-image: url("/tablet_resized.png");
+  }
+}
+
+/* Mobile view */
+@media (max-width: 767px) {
+  .bg-welcomeRobot {
+      background-image: url("/mobile_resized.png");
+  }
+}
+@media (max-width: 480px) {
+  .bg-welcomeRobot {
+      background-image: url("/lower_mobile_resized.png");
+  }
+}
+
+/* animated button */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px); /* Yukarıdan aşağıya gelme efekti */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animated-button {
+  opacity: 0;
+  animation: fadeIn 1s forwards; /* 1 saniyelik animasyon */
+}
+/* animated button */
+
+
 /* welcome page bg */
 
 /* home robot gif */
 .prompt-gif {
-    background-image: url("/robot-running.gif");
+    background-image: url("/prompt-compress.gif");
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
+ 
   }
 
 
@@ -363,7 +425,7 @@ h1 {
 
 /* home bg */
 .bg-skyWallpaper {
-    background-image: url("/bg-wallpaper3.jpg");
+    /* background-image: url("/bg-wallpaper3.jpg"); */
     background-repeat: no-repeat;
     width: 100%;
     height: 100%;
@@ -371,3 +433,4 @@ h1 {
     background-attachment: fixed; 
   }
 /* home bg */
+

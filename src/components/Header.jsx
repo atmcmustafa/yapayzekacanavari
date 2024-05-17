@@ -9,7 +9,7 @@ const Header = () => {
   const [toggle, setToggle] = useState(false);
   const { currentUser, signOutUser } = useAuth();
   return (
-    <header className="relative  z-[500]  container mx-auto px-4 sm:px-6 lg:px-8 flex items-center h-28 text-white font-medium text-sm">
+    <header className="relative  z-[500]  container mx-auto px-4 sm:px-6 lg:px-8 flex items-center h-28 text-black font-medium text-sm">
       <Toaster position="top-center" reverseOrder={false} />
       <nav
         aria-label="Logo menu"
@@ -74,7 +74,7 @@ const Header = () => {
           <>
             <Button
               href={"/login"}
-              className={"btn-translucent mr-4 cursor-pointer"}
+              className={"btn-translucent mr-4 cursor-pointer !text-black"}
             >
               Giriş Yap
             </Button>
