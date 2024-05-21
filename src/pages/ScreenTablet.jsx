@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import HeaderIlkogretim from "../components/HeaderIlkogretim";
 import Game from "../components/Game";
 import GPTtest from "../components/GPTtest";
 import { Analytics } from "@vercel/analytics/react";
-import Footer from "../components/Footer";
 import Layer from "../components/Layer";
 
 const cardsData = [
@@ -74,13 +73,13 @@ const ScreenTablet = () => {
       <Layer />
       <HeaderIlkogretim />
       <div className="text-white flex flex-col lg:flex-row gap-8 items-center">
-        <div className="h-[200px] w-[200px] lg:h-[839px] lg:w-[839px] overflow-x-hidden prompt-gif" />
+        <div className="h-[200px] w-[200px] lg:h-[600px] 2xl:h-[800px] lg:w-2/3 overflow-x-hidden prompt-gif" />
         <div className="flex gap-4 items-center justify-center w-full h-full relative">
           {!startGame && (
             <button
               disabled={activeTextIndex === 0}
               onClick={handlePrevText}
-              className="h-fit my-auto w-12 shadow-none disabled:hidden select-none"
+              className="h-fit my-auto w-12 shadow-none  select-none"
             >
               <img
                 src="https://freesvg.org/storage/img/thumb/arrow-left.png"
@@ -92,13 +91,13 @@ const ScreenTablet = () => {
             className={`${
               startGame
                 ? "w-full relative"
-                : "w-[800px]  md:h-[450px] relative flex items-center justify-center md:my-0"
+                : "w-[500px]  md:h-[450px] relative flex items-center justify-center md:my-0"
             }`}
           >
             {!startGame && (
               <>
-                <div className="h-96 w-full border-2 border-blue-900 rounded-2xl"></div>
-                <div className="absolute left-0 top-0 w-full px-10  py-6 md:py-12 h-full">
+                <div className="h-96  border-2 border-blue-900 rounded-2xl w-[500px]"></div>
+                <div className="absolute left-1/2 -translate-x-1/2 top-0   py-6 md:py-12 h-full w-2/3">
                   <h2 className="text-center w-full mb-3  select-none text-[#F39200]">
                     {activeCard.title}
                   </h2>
@@ -147,7 +146,7 @@ const ScreenTablet = () => {
             <button
               disabled={isLastText}
               onClick={handleNextText}
-              className="h-fit my-auto w-12 shadow-none disabled:hidden select-none"
+              className="h-fit my-auto w-12 shadow-none  select-none"
             >
               <img
                 src="https://freesvg.org/storage/img/thumb/arrow-right.png"
@@ -157,7 +156,6 @@ const ScreenTablet = () => {
           )}
         </div>
       </div>
-      <Footer />
       <Analytics />
     </div>
   );

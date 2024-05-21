@@ -434,3 +434,86 @@ h6 {
   }
 /* home bg */
 
+/* child button 1  */
+.child-button {
+  background-color: #FFA500; 
+  color: white;
+  padding: 10px 40px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  margin: 10px 2px;
+  cursor: pointer;
+  border-radius: 20px; 
+  font-family: 'Comic Sans MS', cursive, sans-serif; 
+  border: 3px solid white;
+  position: relative;
+}
+
+.child-button:after {
+  content: '';
+  position: absolute;
+  left: 20px;
+  bottom: -20px;
+  width: 0;
+  height: 0;
+  border-top: 20px solid #FFA500;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+}
+
+.child-button:hover {
+  background-color: #FF8800; 
+  transform: scale(1.05); 
+}
+/* child button 1  */
+
+/* child button 2  */
+.child-button-2 {
+  background-color: #FFF8DC;
+  color: #FFA500; 
+  padding: 10px 40px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  margin: 10px 2px;
+  cursor: pointer;
+  border-radius: 30px; 
+  font-family: 'Comic Sans MS', cursive, sans-serif; 
+  border: 3px dashed #FFA500; 
+  position: relative;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.child-button-2:hover {
+  background-color: #FFEFD5; 
+  transform: scale(1.05); 
+}
+/* child button 2  */
+
+
+/* child select  */
+.child-select {
+  background-color: #FFEFD5; 
+  color: #FF6347; 
+  padding: 10px;
+  border: 2px dashed #FF6347; 
+  border-radius: 20px; 
+  font-family: 'Comic Sans MS', cursive, sans-serif; 
+  font-size: 16px;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  outline: none;
+}
+
+.child-select option {
+  background-color: #FFF8DC; 
+  color: #FF6347; 
+}
+
+.child-select:hover {
+  background-color: #FFDAB9; 
+}
+/* child select  */
