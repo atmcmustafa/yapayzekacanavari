@@ -4,8 +4,8 @@ import { TiTickOutline } from "react-icons/ti";
 import { FaTimes } from "react-icons/fa";
 import { useWindowSize } from "@uidotdev/usehooks";
 import Confetti from "react-confetti";
-import tekrarDeneyinImage from "../../public/tekrar-deneyin-2.png";
-import kutlama from "../../public/party.jpg";
+import tekrarDeneyinImage from "/tekrar-deneyin-2.png";
+import landscapeCertificateTemplate from "/basari.png";
 import {
   doc,
   updateDoc,
@@ -18,7 +18,8 @@ import { db } from "../firebase-config";
 import { useAuth } from "../context/Auth";
 import { FaCircleInfo } from "react-icons/fa6";
 import toast from "react-hot-toast";
-import loadingBar from "../../public/loading.gif";
+import loadingBar from "/loading.gif";
+
 const GPTtest = () => {
   const [prompt, setPrompt] = useState("");
   const [feedback, setFeedback] = useState("");
@@ -32,6 +33,7 @@ const GPTtest = () => {
   const { currentUser } = useAuth();
   const [correctCount, setCorrectCount] = useState(0);
   const [gameStarted, setGameStarted] = useState(false);
+
   useEffect(() => {
     if (confetti) {
       const timer = setTimeout(() => {
@@ -94,10 +96,10 @@ const GPTtest = () => {
       const newCorrectCount = userDoc.data().correctCount;
       setCorrectCount(newCorrectCount);
 
-      if (newCorrectCount >= 5) {
+      if (newCorrectCount >= 10) {
         setShowDownload(true);
       } else {
-        toast.success(`Sertifika almaya ${5 - newCorrectCount} cevap kaldı!`);
+        toast.success(`Sertifika almaya ${10 - newCorrectCount} cevap kaldı!`);
       }
     }
   }
@@ -115,68 +117,42 @@ const GPTtest = () => {
 
   const handleGeneratePdf = () => {
     const doc = new jsPDF({
-      orientation: "portrait",
+      orientation: "landscape",
       unit: "mm",
       format: "a4",
     });
 
-    // Sertifika başlığı
-    doc.setFont("helvetica", "bold");
-    doc.setFontSize(22);
-    doc.setTextColor(6, 69, 173); // Parlak mavi renk
-    doc.text("Sertifika", 105, 20, null, null, "center"); // Metni sayfa ortasına al
+    const img = new Image();
+    img.src = landscapeCertificateTemplate;
+    img.onload = () => {
+      doc.addImage(img, "PNG", 0, 0, 297, 210);
 
-    // Alt başlık
-    doc.setFontSize(16);
-    doc.setTextColor(100);
-    doc.text(
-      `Tebrikler ${currentUser.displayName || "Sevgili Ogrenci"}!`,
-      105,
-      40,
-      null,
-      null,
-      "center"
-    );
+      // Çocuk adı ekleme
+      doc.setFontSize(24);
+      doc.setTextColor(0, 0, 0);
+      doc.text(
+        currentUser.displayName + " " + "Tebrikler! " ||
+          "Sevgili Ogrenci Tebrikler! ",
+        148.5,
+        105,
+        {
+          align: "center",
+        }
+      );
+      // Tarih ekleme
+      const today = new Date();
+      const date = `${today.getDate()}/${
+        today.getMonth() + 1
+      }/${today.getFullYear()}`;
+      doc.setFontSize(14);
+      doc.text(date, 35, 195); // Tarihi 'DATE' alanının yanına yerleştirin
 
-    // Sertifika İçeriği
-    doc.setFont("helvetica", "normal");
-    doc.setFontSize(14);
-    doc.setTextColor(0, 0, 0);
-    doc.text(
-      "10 dogru cevap ile bu basari sertifikasini kazandiniz.",
-      105,
-      60,
-      null,
-      null,
-      "center"
-    );
-
-    // Özel Not
-    doc.setTextColor(150, 0, 150); // Pembe renk
-    doc.setFontSize(12);
-    doc.text("Devam et ve daha fazla ogren!", 105, 80, null, null, "center");
-
-    // Alt kısım süslemesi
-    doc.setDrawColor(0, 255, 0); // Yeşil
-    doc.setLineWidth(1.5);
-    doc.line(20, 90, 190, 90); // Yatay çizgi
-
-    // Resim ekleyebileceğiniz yer (Varsayılan bir URL'den yüklenir)
-    const imageUrl = kutlama;
-    const imageWidth = 180; // mm
-    const imageHeight = 120; // mm
-    const imageX = (210 - imageWidth) / 2; // 210mm sayfanın genişliği, resmi ortala
-    const imageY = 100; // Resmi metinlerden sonra yerleştir
-
-    doc.addImage(imageUrl, "JPEG", imageX, imageY, imageWidth, imageHeight);
-
-    // PDF'i blob olarak çıkar ve indir
-    const pdfBlob = doc.output("blob");
-    const pdfUrl = URL.createObjectURL(pdfBlob);
-    const link = document.createElement("a");
-    link.href = pdfUrl;
-    link.download = "sertifika.pdf";
-    link.click();
+      // İmza ekleme
+      doc.setFontSize(14);
+      doc.text("Ogretmen", 245, 195); // İmza metnini 'NAPE' alanının yanına yerleştirin
+      // PDF'i indirme
+      doc.save("sertifika.pdf");
+    };
   };
 
   if (!gameStarted) {
@@ -203,7 +179,7 @@ const GPTtest = () => {
         id="gpt-test"
         className="gpt-test container mx-auto px-4 md:px-0 text-white max-w-5xl xl:max-w-7xl w-full lg:w-[600px] xl:w-[800px] "
       >
-        <h2 className="mb-4 ml-2 w-full">
+        <h2 className="mb-4  w-full text-black font-semibold">
           Birkaç prompt girişi yap ve geçerliliğini test et!
         </h2>
         <h3 className=" rounded my-2 p-2 bg-blue-800 !text-white flex items-center gap-2">
@@ -223,11 +199,11 @@ const GPTtest = () => {
             />
             <div className="flex items-start">
               <button
-                className="btn w-fit hover:opacity-80 duration-300 disabled:opacity-50 hover:scale-100"
+                className="btn !bg-indigo-600 !opacity-100 !text-white w-fit hover:opacity-80 duration-300 disabled:opacity-50 hover:scale-100"
                 type="submit"
                 disabled={prompt.length < 1 || loading}
               >
-                {loading ? "Değerlendiriliyor..." : "Prompt'u Değerlendir"}
+                {loading ? "Değerlendiriliyor..." : "Gönder"}
               </button>
               {loading && (
                 <img

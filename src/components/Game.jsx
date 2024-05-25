@@ -9,135 +9,133 @@ const questions = [
     correct: 0,
   },
   {
-    question: "Hangi programlama dili yapay zeka geliştirme için popülerdir?",
-    answers: ["Python", "Java", "JavaScript"],
-    correct: 0,
-  },
-  {
-    question: "Nöral ağlar neyi modellemek için kullanılır?",
-    answers: ["İnsan beyni", "Hava durumu", "Ekonomik sistemler"],
-    correct: 0,
-  },
-  {
-    question:
-      "Makine öğrenmesinde, 'öğrenme sürecini denetleyen' modeller hangi kategori altında değerlendirilir?",
+    question: "Yapay zeka, bilgisayarların ne yapabilmesini sağlar?",
     answers: [
-      "Denetimsiz öğrenme",
-      "Denetimli öğrenme",
-      "Pekiştirmeli öğrenme",
+      "Uyumalarını",
+      "Düşünmelerini ve öğrenmelerini",
+      "Yemek yapmalarını",
     ],
     correct: 1,
   },
   {
-    question:
-      "Doğal dil işleme ile en çok hangi tip AI uygulaması geliştirilir?",
-    answers: ["Chatbotlar", "Tavsiye sistemleri", "Otomatik pilot sistemler"],
+    question: "Yapay zekanın en yaygın kullanıldığı yerlerden biri nedir?",
+    answers: ["Sesli asistanlar", "Otomobiller", "El fenerleri"],
     correct: 0,
   },
   {
-    question: "Prompt mühendisliği hangi teknoloji ile ilişkilidir?",
-    answers: ["Blockchain", "Yapay zeka", "IoT"],
+    question: "Siri ve Alexa ne tür yapay zeka örnekleridir?",
+    answers: ["Robot", "Sesli asistan", "Bilgisayar oyunu"],
     correct: 1,
   },
   {
-    question:
-      "Bir yapay zeka modeli eğitilirken, modelin aşırı uyum sağlamasını (overfitting) önlemek için ne yapılabilir?",
-    answers: ["Modeli basitleştirme", "Eğitim süresini kısaltma", "Tümü doğru"],
-    correct: 1,
-  },
-  {
-    question: "Hangisi yapay zeka etiği ile ilgili bir sorundur?",
-    answers: ["Enerji tüketimi", "Algoritmik yanlılık", "Veri depolama"],
-    correct: 1,
-  },
-  {
-    question:
-      "Bir yapay zeka sistemi gerçek dünya verileriyle nasıl test edilir?",
+    question: "Bir bilgisayar oyununda yapay zeka ne yapar?",
     answers: [
-      "Kontrollü denemeler",
-      "Gerçek dünya senaryolarında",
-      "Tümü doğru",
+      "Müzik çalar",
+      "Oyun oynar",
+      "Rakiplerimizi daha akıllı hale getirir",
     ],
     correct: 2,
   },
   {
-    question: "Transfer öğrenme, yapay zeka modellerinde neyi amaçlar?",
+    question: "Yapay zeka, doktorlara nasıl yardımcı olabilir?",
     answers: [
-      "Öğrenme sürecini hızlandırmak",
-      "Daha az veri ile öğrenmek",
-      "Tümü doğru",
+      "Hastalıkları teşhis ederek",
+      "Ameliyat yaparak",
+      "Reçete yazarak",
     ],
-    correct: 1,
-  },
-  {
-    question: "Prompt mühendisliği hangi sorunu çözmeyi hedefler?",
-    answers: [
-      "Veri güvenliği",
-      "Modelin kullanıcı isteklerine yanıt verme şekli",
-
-      "Veri depolama",
-    ],
-    correct: 1,
-  },
-  {
-    question:
-      "Özel bir yapay zeka uygulaması için modelin optimize edilmesi işlemine ne ad verilir?",
-    answers: [
-      "Fonksiyonel tuning",
-      "Hiperparametre ayarlama",
-
-      "Veri seti optimizasyonu",
-    ],
-    correct: 1,
-  },
-  {
-    question:
-      "Görüntü tanıma teknolojileri hangi yapay zeka tekniklerinden faydalanır?",
-    answers: ["Doğal dil işleme", "Derin öğrenme", "Karar ağaçları"],
-    correct: 1,
-  },
-  {
-    question:
-      "Bir chatbot'un kullanıcı sorularına daha doğru yanıt verebilmesi için hangi teknoloji kullanılır?",
-    answers: ["Doğal dil işleme", "Lojistik regresyon", "Ana bileşen analizi"],
     correct: 0,
   },
   {
-    question: "Yapay zeka ile ilgili hangi yaklaşım biyolojik ilham alır?",
-    answers: ["Simüle annealing", "Genetik algoritmalar", "SVM"],
+    question:
+      "Öneri sistemleri, izlediğimiz veya dinlediğimiz şeylere göre bize ne yapar?",
+    answers: ["Yeni şarkılar ve videolar önerir", "Kahve yapar", "Kitap okur"],
+    correct: 0,
+  },
+  {
+    question: "Yapay zeka, bir resimdeki kediyi tanımayı nasıl öğrenir?",
+    answers: ["Birçok kedi resmi görerek", "Kitap okuyarak", "Uyuyarak"],
+    correct: 0,
+  },
+  {
+    question: "Google Asistan, hangi şirketin sesli asistanıdır?",
+    answers: ["Apple", "Google", "Amazon"],
     correct: 1,
+  },
+  {
+    question: "Yapay zeka, hangi cihazlarda bulunabilir?",
+    answers: ["Akıllı telefonlar", "El fenerleri", "Çiçek vazoları"],
+    correct: 0,
   },
   {
     question:
-      "Hangi metrik, bir yapay zeka modelinin performansını değerlendirmede kullanılmaz?",
-    answers: ["F1-Skoru", "MSE", "ROI"],
-    correct: 1,
-  },
-  {
-    question:
-      "Yapay zekanın karar verme süreçlerinde şeffaflığı sağlamak için hangi yöntemler kullanılır?",
-    answers: ["Kara kutu modelleri", "Açıklanabilir AI", "Hiçbiri"],
-    correct: 1,
-  },
-  {
-    question: "Prompt mühendisliğinin amacı nedir?",
+      "Eğer bir yapay zeka robotuna 'En sevdiğin renk ne?' diye sorarsak, ne yapar?",
     answers: [
-      "Daha hızlı hesaplama",
-      "Daha doğru veri analizi",
-      "AI modellerinden daha iyi yanıtlar almak",
+      "Cevap vermez",
+      "Öğrendiği bilgilere göre cevap verir",
+      "Şarkı söyler",
     ],
+    correct: 1,
+  },
+  {
+    question: "Yapay zeka robotları nasıl öğrenir?",
+    answers: ["Kitap okuyarak ve izleyerek", "Oyun oynayarak", "Uyuyarak"],
+    correct: 0,
+  },
+  {
+    question: "Bir resim tanıma oyunu ile yapay zeka ne yapabilir?",
+    answers: ["Nesneleri tanıyabilir", "Kitap yazabilir", "Dans edebilir"],
+    correct: 0,
+  },
+  {
+    question: "Chatbot nedir?",
+    answers: [
+      "Yemek pişiren bir robot",
+      "Sizinle konuşabilen bir bilgisayar programı",
+      "Müzik çalan bir cihaz",
+    ],
+    correct: 1,
+  },
+  {
+    question: "Yapay zeka gelecekte ne yapabilir?",
+    answers: [
+      "Ev işlerinde yardımcı olabilir",
+      "Uzaya gidebilir",
+      "Yemek pişirebilir",
+    ],
+    correct: 0,
+  },
+  {
+    question: "Yapay zeka ile ilgili hikayeler yazmak neye yardımcı olabilir?",
+    answers: ["Hayal gücümüzü geliştirmeye", "Uyumaya", "Koşmaya"],
+    correct: 0,
+  },
+  {
+    question: "Netflix, hangi yapay zeka türünü kullanarak önerilerde bulunur?",
+    answers: ["Öneri sistemleri", "Sesli asistanlar", "Robotlar"],
+    correct: 0,
+  },
+  {
+    question: "Bir yapay zeka öğretmen, öğrencilere nasıl yardımcı olabilir?",
+    answers: [
+      "Dersleri anlatabilir",
+      "Ev ödevlerini yapabilir",
+      "Müzik dinletebilir",
+    ],
+    correct: 0,
+  },
+  {
+    question: "Yapay zeka robotları neyi yapamaz?",
+    answers: ["Düşünebilir", "Öğrenebilir", "Yemek yiyebilir"],
     correct: 2,
   },
   {
-    question: "Otonom araçlar hangi yapay zeka tekniklerini kullanır?",
-    answers: ["Denetimli öğrenme", "Denetimsiz öğrenme", "Tümü doğru"],
-    correct: 1,
-  },
-  {
-    question:
-      "Bir yapay zeka modelinin öğrenme kapasitesi hangi özellik ile doğrudan ilişkilidir?",
-    answers: ["Model mimarisi", "Hiperparametreler", "Tümü doğru"],
-    correct: 1,
+    question: "Yapay zeka ile ilgili en heyecan verici şey nedir?",
+    answers: [
+      "İnsanlar gibi düşünüp öğrenebilmesi",
+      "Uyuması",
+      "Yemek pişirmesi",
+    ],
+    correct: 0,
   },
 ];
 

@@ -1,6 +1,5 @@
-import ilkokulLogo2 from "/logo-8.png";
+import ilkokulLogo2 from "/yapaymacera-yeni.png";
 import { Toaster } from "react-hot-toast";
-import Button from "./Button";
 import { useAuth } from "../context/Auth";
 import { useState } from "react";
 import { HiOutlineBars3BottomRight } from "react-icons/hi2";
@@ -17,7 +16,7 @@ const HeaderIlkogretim = () => {
         <div className="absolute inset-0 bg-black/40 h-screen w-screen overflow-hidden z-50"></div>
       )}
       {/* overlay */}
-      <header className="relative justify-between z-[500]   container mx-auto px-4 sm:px-6 lg:px-8 flex items-center h-28 text-white font-medium text-sm py-8">
+      <header className="relative justify-between z-[500]   container mx-auto px-4 sm:px-6 lg:px-8 flex items-center h-20 md:h-28 text-white font-medium text-sm py-8">
         <Toaster position="top-center" reverseOrder={false} />
         <nav
           aria-label="Logo menu"
@@ -27,7 +26,7 @@ const HeaderIlkogretim = () => {
             <a className="logo" href="/">
               <img
                 loading="lazy"
-                className="w-28  h-28 lg:w-36   lg:h-36   rounded-full"
+                className="w-20  h-20  mt-4  md:w-36  md:h-36   rounded-full"
                 src={ilkokulLogo2}
                 alt="ai tech"
               />
@@ -37,7 +36,7 @@ const HeaderIlkogretim = () => {
 
         {toggle ? (
           <div
-            className={` w-72 bg-violet-600 z-40 h-screen fixed left-0 top-0 duration-300`}
+            className={` w-2/3 bg-sky-500 z-40 h-screen fixed left-0 top-0 duration-300`}
           >
             <div className="mt-24">
               <nav
@@ -127,9 +126,12 @@ const HeaderIlkogretim = () => {
                 className="md:hidden block"
               >
                 {toggle ? (
-                  <IoMdClose size={48} />
+                  <IoMdClose size={36} />
                 ) : (
-                  <HiOutlineBars3BottomRight size={48} />
+                  <HiOutlineBars3BottomRight
+                    className="text-orange-600"
+                    size={36}
+                  />
                 )}
               </div>
             </div>

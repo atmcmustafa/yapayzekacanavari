@@ -6,6 +6,7 @@ import { doc, setDoc, getDoc, updateDoc } from "firebase/firestore";
 import { uploadProfilePicture } from "../firebase-config.js";
 import Header from "../components/Header.jsx";
 import { Analytics } from "@vercel/analytics/react";
+import Layer from "../components/Layer.jsx";
 const UserProfile = () => {
   const { currentUser, signOutUser } = useAuth();
   const navigate = useNavigate();
@@ -91,7 +92,8 @@ const UserProfile = () => {
       {currentUser ? (
         <div className=" container mx-auto p-4 md:p-0">
           <Header />
-          <div className="p-7 rounded-xl border border-gray-700 text-white">
+          <Layer />
+          <div className="p-7 rounded-xl border border-gray-700 text-orange-600 mt-8 lg:mt-24">
             <div className="flex flex-col relative gap-4 md:gap-4 md:flex-row justify-between  ">
               <div className="flex flex-col   md:flex-row  gap-7">
                 <div className="img w-36 rounded ">
@@ -119,7 +121,7 @@ const UserProfile = () => {
                       <>
                         <input type="file" ref={fileInputRef} />
                         <button className="btn" onClick={handleUpload}>
-                          Fotoğraf Yükle
+                          Yüklemeyi Onayla
                         </button>
                       </>
                     )}
@@ -128,7 +130,7 @@ const UserProfile = () => {
                 <div className="flex flex-col gap-4">
                   <h2>Profil</h2>
 
-                  <form className="flex flex-col gap-4">
+                  <form className="flex flex-col gap-4 ">
                     <div
                       className={`${
                         update
@@ -146,7 +148,7 @@ const UserProfile = () => {
                       <input
                         className={`${
                           update
-                            ? "bg-transparent border text-white  outline-none"
+                            ? "bg-transparent border text-black  outline-none"
                             : "pointer-events-none "
                         } bg-slate-900 h-10 rounded-xl px-4 `}
                         type="text"
@@ -163,7 +165,7 @@ const UserProfile = () => {
                       <textarea
                         className={`${
                           update
-                            ? "bg-transparent border text-white  outline-none"
+                            ? "bg-transparent border text-black  outline-none"
                             : "pointer-events-none "
                         } bg-slate-900 h-24 rounded-xl px-4 py-1`}
                         value={bio}
@@ -180,7 +182,7 @@ const UserProfile = () => {
                       <select
                         className={`${
                           update
-                            ? "bg-transparent border text-white  outline-none"
+                            ? "bg-transparent border text-black  outline-none"
                             : "pointer-events-none "
                         } bg-slate-900 h-10 rounded-xl px-2`}
                         value={level}

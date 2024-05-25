@@ -1,7 +1,8 @@
 import { useState } from "react";
 import Button from "./Button";
 import { HiMiniBars3BottomRight } from "react-icons/hi2";
-import ilkokulLogo2 from "/logo-8.png";
+import ilkokulLogo2 from "/yapaymacera-yeni.png";
+
 import { useAuth } from "../context/Auth";
 
 import { Toaster } from "react-hot-toast";
