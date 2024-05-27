@@ -10,6 +10,7 @@ import PublicRoute from "./components/PublicRoute.jsx";
 import Terms from "./pages/Terms.jsx";
 import ScreenTablet from "./pages/ScreenTablet.jsx";
 import WelcomeGif from "./pages/WelcomeGif.jsx";
+import ErrorPage from "./pages/ErrorPage.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <AuthProvider>
@@ -19,6 +20,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <Route path="/" element={<WelcomeGif />} />
         <Route path="/home" element={<ScreenTablet />} />
         <Route path="/gizlilik_sozlesmesi" element={<Terms />} />
+        <Route path="*" element={<ErrorPage />} />
 
         <Route
           path="/login"

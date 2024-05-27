@@ -109,11 +109,11 @@ const ScreenTablet = () => {
   };
   console.log(activeCardId);
   return (
-    <div className="relative h-screen bg-skyWallpaper px-4 sm:px-0">
+    <div className="relative min-dvh-screen bg-skyWallpaper px-4 sm:px-0">
       <Layer />
       <HeaderIlkogretim />
       <div className="text-white flex flex-col lg:flex-row gap-8 items-center">
-        <div className="h-[200px] w-[200px] lg:h-[600px] xl:h-[750px] 2xl:h-[700px] lg:w-2/3 overflow-x-hidden prompt-gif -mt-12" />
+        <div className="h-[200px] w-[200px] lg:h-[600px] xl:h-[750px] 2xl:h-[700px] lg:w-2/3 overflow-x-hidden prompt-gif -mt-24 md:-mt-12" />
         <div className="flex flex-col gap-4 items-center justify-center w-full h-full relative">
           <div
             className={`${
@@ -126,7 +126,7 @@ const ScreenTablet = () => {
               <button
                 disabled={activeTextIndex === 0}
                 onClick={handlePrevText}
-                className=" my-auto w-12 md:w-16 lg:w-20 xl:w-24 shadow-none  select-none md:mb-32"
+                className=" my-auto w-12 md:w-16 lg:w-20 xl:w-24 shadow-none  select-none lg:mb-32"
               >
                 <img
                   src="https://freesvg.org/storage/img/thumb/arrow-left.png"
@@ -136,9 +136,9 @@ const ScreenTablet = () => {
             )}
             {!startGame && (
               <>
-                <div className="h-96 md:mt-32  border-2 border-blue-900 rounded-2xl w-full sm:w-[600px] md:w-[700px] xl:w-[1000px]"></div>
+                <div className="h-96 md:h-[450px] lg:mt-32  border-2 border-blue-900 rounded-2xl w-full sm:w-[600px] md:w-[700px] xl:w-[1000px]"></div>
 
-                <div className="absolute left-1/2 md:mt-16 -translate-x-1/2 top-0   py-6 md:py-12 h-full w-2/3">
+                <div className="absolute left-1/2 lg:mt-16 -translate-x-1/2 top-0   py-6 md:py-12 h-full w-2/3">
                   <h5 className="text-center w-full mb-3  select-none text-[#F39200]">
                     {activeCard.title}
                   </h5>
@@ -175,7 +175,7 @@ const ScreenTablet = () => {
               <button
                 disabled={isLastText}
                 onClick={handleNextText}
-                className=" my-auto w-12 md:w-16 lg:w-20 xl:w-24 shadow-none  select-none md:mb-32  "
+                className=" my-auto w-12 md:w-16 lg:w-20 xl:w-24 shadow-none  select-none lg:mb-32  "
               >
                 <img
                   src="https://freesvg.org/storage/img/thumb/arrow-right.png"

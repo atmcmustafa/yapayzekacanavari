@@ -5,7 +5,7 @@ import { FaTimes } from "react-icons/fa";
 import { useWindowSize } from "@uidotdev/usehooks";
 import Confetti from "react-confetti";
 import tekrarDeneyinImage from "/tekrar-deneyin-2.png";
-import landscapeCertificateTemplate from "/basari.png";
+import landscapeCertificateTemplate from "/sablon1.png";
 import {
   doc,
   updateDoc,
@@ -13,6 +13,7 @@ import {
   getDoc,
   arrayUnion,
 } from "firebase/firestore";
+import "../assets/Brusher-normal";
 import { jsPDF } from "jspdf";
 import { db } from "../firebase-config";
 import { useAuth } from "../context/Auth";
@@ -128,29 +129,24 @@ const GPTtest = () => {
       doc.addImage(img, "PNG", 0, 0, 297, 210);
 
       // Çocuk adı ekleme
-      doc.setFontSize(24);
-      doc.setTextColor(0, 0, 0);
-      doc.text(
-        currentUser.displayName + " " + "Tebrikler! " ||
-          "Sevgili Ogrenci Tebrikler! ",
-        148.5,
-        105,
-        {
-          align: "center",
-        }
-      );
+      doc.setFont("Brusher", "normal");
+      doc.setFontSize(48);
+      doc.setTextColor(255, 255, 255);
+      doc.text(currentUser.displayName || "Sevgili Ogrenci  ", 148.5, 70, {
+        align: "center",
+      });
       // Tarih ekleme
       const today = new Date();
       const date = `${today.getDate()}/${
         today.getMonth() + 1
       }/${today.getFullYear()}`;
-      doc.setFontSize(14);
-      doc.text(date, 35, 195); // Tarihi 'DATE' alanının yanına yerleştirin
+      doc.setFontSize(24);
+      doc.text("Verilis Tarihi:" + date, 100, 140); // Tarihi 'DATE' alanının yanına yerleştirin
 
       // İmza ekleme
-      doc.setFontSize(14);
-      doc.text("Ogretmen", 245, 195); // İmza metnini 'NAPE' alanının yanına yerleştirin
-      // PDF'i indirme
+      // doc.setFontSize(14);
+      // doc.text("Ogretmen", 245, 195); // İmza metnini 'NAPE' alanının yanına yerleştirin
+      // PDF'i indirme"
       doc.save("sertifika.pdf");
     };
   };
