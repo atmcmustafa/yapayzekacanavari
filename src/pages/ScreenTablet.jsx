@@ -142,7 +142,7 @@ const ScreenTablet = () => {
                   <h5 className="text-center w-full mb-3  select-none text-[#F39200]">
                     {activeCard.title}
                   </h5>
-                  <p className="!text-black font-semibold  select-none  tracking-wider xl:text-2xl">
+                  <p className="!text-black font-semibold  select-none tracking-wider text-xl  xl:text-2xl md:!leading-10 xl:!leading-[50px]">
                     {activeContent[activeTextIndex]}
                   </p>
                   <div className="w-full flex flex-col items-center mt-8 justify-center gap-4">
