@@ -7,6 +7,8 @@ import Layer from "../components/Layer";
 import AudioPlayer from "../components/AudioPlayer";
 import { FaArrowRight } from "react-icons/fa";
 import { BiInfoCircle } from "react-icons/bi";
+import { IoGameControllerOutline } from "react-icons/io5";
+import { FaArrowLeft } from "react-icons/fa";
 
 const cardsData = [
   {
@@ -197,22 +199,25 @@ const ScreenTablet = () => {
               )}
               {!startGame && (
                 <>
-                  <div className="h-96 md:h-[450px] lg:mt-32  border-2 border-blue-900 rounded-2xl w-full sm:w-[600px] md:w-[700px] xl:w-[1000px]"></div>
+                  <div className="h-96 md:h-[450px] lg:mt-32  border-2   rounded-2xl w-full sm:w-[600px] md:w-[700px] xl:w-[1000px] bg-yellow-600 border-yellow-500 !text-white"></div>
 
-                  <div className="absolute left-1/2 lg:mt-16 -translate-x-1/2 top-0   py-6 md:py-12 h-full w-2/3">
-                    <h5 className="text-center w-full mb-3  select-none text-[#F39200]">
+                  <div className="absolute left-1/2 lg:mt-16  -translate-x-1/2 top-0   py-6 md:py-12 h-full w-2/3">
+                    <h5 className="text-center w-full mb-3  select-none text-white">
                       {activeCard.title}
                     </h5>
-                    <p className="!text-black font-semibold  select-none tracking-wider text-xl  xl:text-2xl md:!leading-10 xl:!leading-[50px]">
+                    <p className="text-zinc-200 font-semibold  select-none tracking-wider text-xl  xl:text-2xl md:!leading-10 xl:!leading-[50px]">
                       {activeContent[activeTextIndex]}
                     </p>
                     <div className="w-full flex flex-col items-center mt-8 justify-center gap-4">
                       {isLastText && (
                         <button
-                          className="bg-blue-600 rounded-xl w-full mx-auto h-[50px] "
+                          className="bg-green-700 rounded-xl w-full mx-auto h-[50px] "
                           onClick={() => setStartGame(true)}
                         >
-                          Haydi Oyun Oynayalım!
+                          <span className="flex gap-4 items-center justify-center">
+                            <IoGameControllerOutline size={36} />
+                            Haydi Oyun Oynayalım!
+                          </span>
                         </button>
                       )}
 
@@ -221,11 +226,19 @@ const ScreenTablet = () => {
                           onClick={() =>
                             handleCardChange(activeCardId === 1 ? 2 : 1)
                           }
-                          className="h-[50px] rounded-xl w-full border mx-auto text-black"
+                          className="h-[50px] rounded-xl w-full border mx-auto text-white"
                         >
-                          {activeCardId === 1
-                            ? "Diğer Konuya Geç"
-                            : "Önceki Konuya Dön"}
+                          {activeCardId === 1 ? (
+                            <span className="flex gap-4 items-center justify-center">
+                              <FaArrowRight size={36} />
+                              Sonraki Konuya Geç
+                            </span>
+                          ) : (
+                            <span className="flex gap-4 items-center justify-center">
+                              <FaArrowLeft size={36} />
+                              Önceki Konuya Geri Dön
+                            </span>
+                          )}
                         </button>
                       )}
                     </div>
@@ -262,9 +275,9 @@ const ScreenTablet = () => {
             {!startGame && (
               <button
                 onClick={() => setShowLessonText(false)}
-                className="h-14 w-full max-w-lg border border-blue-500 bg-blue-600 text-white rounded-xl font-semibold flex justify-center items-center gap-4 xl:mt-16"
+                className="h-14 w-full max-w-lg border bg-blue-500 border-blue-400 text-white rounded-xl font-semibold flex justify-center items-center gap-4 xl:mt-16"
               >
-                <FaArrowRight size={24} />
+                <FaArrowLeft size={24} />
                 Sesli Tanıtıma Geri Dön
               </button>
             )}
