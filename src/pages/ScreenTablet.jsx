@@ -146,14 +146,14 @@ const ScreenTablet = () => {
               <p className="text-white  text-base md:text-xl">
                 <span className="flex gap-2">
                   <FaArrowRight size={36} />
-                  Merhaba sevgili dostum. Yapay Zekayı benimle tanışmak için
+                  Merhaba sevgili dostum. Yapay Zekayı benimle tanımak için
                   'Oynat' butonuna tıkla.
                 </span>
                 <br /> <br />
                 <span className="flex gap-2 text-base md:text-xl">
                   <FaArrowRight size={36} />
-                  Direkt ders anlatımına geçmek istersen ise 'Konu Anlatımına
-                  Geç' butonuna tıklayabilirsin!
+                  Eğer direkt ders anlatımına geçmek istersen ise 'Konu
+                  Anlatımına Geç' butonuna tıklayabilirsin!
                 </span>
               </p>
             </div>
