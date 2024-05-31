@@ -20,6 +20,7 @@ import { useAuth } from "../context/Auth";
 import { FaCircleInfo } from "react-icons/fa6";
 import toast from "react-hot-toast";
 import loadingBar from "/loading.gif";
+import { FaQuestionCircle } from "react-icons/fa";
 
 const GPTtest = () => {
   const [prompt, setPrompt] = useState("");
@@ -175,12 +176,14 @@ const GPTtest = () => {
         id="gpt-test"
         className="gpt-test container mx-auto px-4 md:px-0 text-white max-w-5xl xl:max-w-7xl w-full lg:w-[600px] xl:w-[800px] "
       >
-        <h2 className="mb-4  w-full text-black font-semibold">
-          Birkaç prompt girişi yap ve geçerliliğini test et!
-        </h2>
-        <h3 className=" rounded my-2 p-2 bg-blue-800 !text-white flex items-center gap-2">
-          <FaCircleInfo />
-          10 adet doğru cevap ver ve sertifikayı kap!
+        <h3 className="rounded mb-2 p-2 border font-semibold text-white bg-blue-800  flex items-center gap-2">
+          <FaQuestionCircle size={36} />
+          Prompt mühendisliği eğitiminden edindiğin bilgiler ışığında sorular
+          sor.
+        </h3>
+        <h3 className=" rounded my-2 p-2 border font-semibold text-blue-800 border-blue-800 flex items-center gap-2">
+          <FaCircleInfo size={36} />
+          10 adet doğru soru sor ve sertifikayı kap!
         </h3>
         <form
           className="flex flex-col  w-full gap-4 mb-4 overflow-hidden h-full"
@@ -188,14 +191,14 @@ const GPTtest = () => {
         >
           <div className="w-full">
             <textarea
-              className="rounded-xl bg-slate-900 p-4 w-full text-white resize-none outline-none"
+              className="rounded bg-slate-900 p-4 w-full text-white resize-none outline-none"
               value={prompt}
               onChange={(e) => setPrompt(e.target.value)}
               placeholder="Buraya yazın..."
             />
             <div className="flex items-start">
               <button
-                className="btn !bg-indigo-600 !opacity-100 !text-white w-fit hover:opacity-80 duration-300 disabled:opacity-50 hover:scale-100"
+                className=" bg-green-600 !opacity-100 !text-white w-full !h-10 !rounded  duration-300 disabled:bg-opacity-50 hover:scale-100 hover:bg-green-700 "
                 type="submit"
                 disabled={prompt.length < 1 || loading}
               >
@@ -212,7 +215,7 @@ const GPTtest = () => {
 
           {feedback && (
             <div
-              className={`rounded-xl p-4 bg-slate-900 w-full flex items-center justify-between gap-4 ${feedbackColor}`}
+              className={`rounded p-4 bg-slate-900 w-full flex items-center justify-between gap-4 ${feedbackColor}`}
             >
               {feedback}
               {feedbackColor === "text-green-600" ? (

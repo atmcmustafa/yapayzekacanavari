@@ -4,6 +4,9 @@ import Game from "../components/Game";
 import GPTtest from "../components/GPTtest";
 import { Analytics } from "@vercel/analytics/react";
 import Layer from "../components/Layer";
+import AudioPlayer from "../components/AudioPlayer";
+import { FaArrowRight } from "react-icons/fa";
+import { BiInfoCircle } from "react-icons/bi";
 
 const cardsData = [
   {
@@ -11,6 +14,7 @@ const cardsData = [
     imgLink: "https://freesvg.org/storage/img/thumb/Blue-Robot.png",
     title: "Yapay Zeka Nedir?",
     bgColor: "bg-indigo-500",
+    audioFile: "/yz.mp3",
     content: [
       "Merhaba çocuklar! Bugün sizlere çok özel ve eğlenceli bir konudan bahsedeceğim: Yapay Zeka!",
       "Yapay zeka (YZ), bilgisayarların ve robotların insanlar gibi düşünebilmesi, öğrenebilmesi ve problemleri çözebilmesi için yapılan çalışmalardır...",
@@ -35,6 +39,7 @@ const cardsData = [
       "https://freesvg.org/storage/img/thumb/happy_robot_remix_monsterbraingames.png",
     title: "Prompt Mühendisliği",
     bgColor: "bg-sky-800",
+    audioFile: "/prompt.mp3",
     content: [
       "Merhaba çocuklar! Bugün sizlere çok özel ve eğlenceli bir konudan bahsedeceğim: Prompt Mühendisliği!",
       "Prompt mühendisliği, bilgisayarlara veya yapay zekalara ne yapmalarını istediğimizi söylemek için kullandığımız talimatlar yazma sanatıdır.",
@@ -107,98 +112,178 @@ const ScreenTablet = () => {
     setActiveTextIndex(0);
     setStartGame(false);
   };
+
+  const [showLessonText, setShowLessonText] = useState(false);
+
+  const handleAudioEnd = () => {
+    setShowLessonText(true);
+  };
+
+  const goToMain = () => {
+    setShowLessonText(true);
+  };
   console.log(activeCardId);
   return (
     <div className="relative min-dvh-screen bg-skyWallpaper px-4 sm:px-0">
       <Layer />
       <HeaderIlkogretim />
-      <div className="text-white flex flex-col lg:flex-row gap-8 items-center">
-        <div className="h-[200px] w-[200px] lg:h-[600px] xl:h-[750px] 2xl:h-[700px] lg:w-2/3 overflow-x-hidden prompt-gif -mt-24 md:-mt-12" />
-        <div className="flex flex-col gap-4 items-center justify-center w-full h-full relative">
-          <div
-            className={`${
-              startGame
-                ? "w-full relative"
-                : "w-full sm:w-[600px] md:w-[700px] xl:w-[1000px]  md:h-[450px] relative flex items-center justify-center md:my-0 "
-            }`}
-          >
-            {!startGame && (
-              <button
-                disabled={activeTextIndex === 0}
-                onClick={handlePrevText}
-                className=" my-auto w-12 md:w-16 lg:w-20 xl:w-24 shadow-none  select-none lg:mb-32"
-              >
-                <img
-                  src="https://freesvg.org/storage/img/thumb/arrow-left.png"
-                  alt="Previous"
-                />
-              </button>
-            )}
-            {!startGame && (
-              <>
-                <div className="h-96 md:h-[450px] lg:mt-32  border-2 border-blue-900 rounded-2xl w-full sm:w-[600px] md:w-[700px] xl:w-[1000px]"></div>
+      <div
+        className={`text-white flex flex-col lg:flex-row ${
+          showLessonText ? "gap-8" : "gap-0"
+        } items-center `}
+      >
+        <div
+          className={`h-[200px] w-[200px] lg:h-[600px] xl:h-[750px] 2xl:h-[700px] -mt-24 md:-mt-12 overflow-x-hidden prompt-gif  ${
+            showLessonText ? " lg:w-2/3" : "sm:h-[400px] sm:w-[400px] lg:w-1/2"
+          }`}
+        />
 
-                <div className="absolute left-1/2 lg:mt-16 -translate-x-1/2 top-0   py-6 md:py-12 h-full w-2/3">
-                  <h5 className="text-center w-full mb-3  select-none text-[#F39200]">
-                    {activeCard.title}
-                  </h5>
-                  <p className="!text-black font-semibold  select-none tracking-wider text-xl  xl:text-2xl md:!leading-10 xl:!leading-[50px]">
-                    {activeContent[activeTextIndex]}
-                  </p>
-                  <div className="w-full flex flex-col items-center mt-8 justify-center gap-4">
-                    {isLastText && (
-                      <button
-                        className="bg-blue-600 rounded-xl w-full mx-auto h-[50px] "
-                        onClick={() => setStartGame(true)}
-                      >
-                        Haydi Oyun Oynayalım!
-                      </button>
-                    )}
+        {!showLessonText && (
+          <div className="flex justify-center flex-col items-center gap-4 lg:mt-8 xl:mt-0">
+            <div className="p-6 border bg-yellow-600 border-yellow-500  max-w-lg rounded-xl">
+              <p className="text-white  text-base md:text-xl">
+                <span className="flex gap-2">
+                  <FaArrowRight size={36} />
+                  Merhaba sevgili dostum. Yapay Zekayı benimle tanışmak için
+                  'Oynat' butonuna tıkla.
+                </span>
+                <br /> <br />
+                <span className="flex gap-2 text-base md:text-xl">
+                  <FaArrowRight size={36} />
+                  Direkt ders anlatımına geçmek istersen ise 'Konu Anlatımına
+                  Geç' butonuna tıklayabilirsin!
+                </span>
+              </p>
+            </div>
+            <div className="p-6 border bg-blue-500 border-blue-400  max-w-lg rounded-xl">
+              <p className="text-white text-sm md:text-base">
+                <span className="flex gap-2">
+                  <BiInfoCircle size={36} />
+                  Ses dosyası bittiğinde konu anlatım bölümüne otomatik olarak
+                  yönlendirileceksin.
+                </span>
+              </p>
+            </div>
+            <div className="w-full">
+              <AudioPlayer
+                src={"/audio.m4a"}
+                goToMain={goToMain}
+                onAudioEnd={handleAudioEnd}
+              />
+            </div>
+          </div>
+        )}
 
-                    {isLastText && (
-                      <button
-                        onClick={() =>
-                          handleCardChange(activeCardId === 1 ? 2 : 1)
-                        }
-                        className="h-[50px] rounded-xl w-full border mx-auto text-black"
-                      >
-                        {activeCardId === 1
-                          ? "Diğer Konuya Geç"
-                          : "Önceki Konuya Dön"}
-                      </button>
-                    )}
+        {showLessonText && (
+          <div className="flex flex-col gap-4 items-center justify-center w-full h-full relative">
+            <div
+              className={`${
+                startGame
+                  ? "w-full relative"
+                  : "w-full sm:w-[600px] md:w-[700px] xl:w-[1000px]  md:h-[450px] relative flex items-center justify-center md:my-0 "
+              }`}
+            >
+              {!startGame && (
+                <button
+                  disabled={activeTextIndex === 0}
+                  onClick={handlePrevText}
+                  className=" my-auto w-12 md:w-16 lg:w-20 xl:w-24 shadow-none  select-none lg:mb-32"
+                >
+                  <img
+                    src="https://freesvg.org/storage/img/thumb/arrow-left.png"
+                    alt="Previous"
+                  />
+                </button>
+              )}
+              {!startGame && (
+                <>
+                  <div className="h-96 md:h-[450px] lg:mt-32  border-2 border-blue-900 rounded-2xl w-full sm:w-[600px] md:w-[700px] xl:w-[1000px]"></div>
+
+                  <div className="absolute left-1/2 lg:mt-16 -translate-x-1/2 top-0   py-6 md:py-12 h-full w-2/3">
+                    <h5 className="text-center w-full mb-3  select-none text-[#F39200]">
+                      {activeCard.title}
+                    </h5>
+                    <p className="!text-black font-semibold  select-none tracking-wider text-xl  xl:text-2xl md:!leading-10 xl:!leading-[50px]">
+                      {activeContent[activeTextIndex]}
+                    </p>
+                    <div className="w-full flex flex-col items-center mt-8 justify-center gap-4">
+                      {isLastText && (
+                        <button
+                          className="bg-blue-600 rounded-xl w-full mx-auto h-[50px] "
+                          onClick={() => setStartGame(true)}
+                        >
+                          Haydi Oyun Oynayalım!
+                        </button>
+                      )}
+
+                      {isLastText && (
+                        <button
+                          onClick={() =>
+                            handleCardChange(activeCardId === 1 ? 2 : 1)
+                          }
+                          className="h-[50px] rounded-xl w-full border mx-auto text-black"
+                        >
+                          {activeCardId === 1
+                            ? "Diğer Konuya Geç"
+                            : "Önceki Konuya Dön"}
+                        </button>
+                      )}
+                    </div>
                   </div>
-                </div>
-              </>
+                </>
+              )}
+              {!startGame && (
+                <button
+                  disabled={isLastText}
+                  onClick={handleNextText}
+                  className=" my-auto w-12 md:w-16 lg:w-20 xl:w-24 shadow-none  select-none lg:mb-32  "
+                >
+                  <img
+                    src="https://freesvg.org/storage/img/thumb/arrow-right.png"
+                    alt="Next"
+                  />
+                </button>
+              )}
+            </div>
+            {startGame && (
+              <div>
+                {activeCardId === 1 ? <Game /> : <GPTtest />}
+                <button
+                  onClick={() => handleCardChange(activeCardId === 1 ? 2 : 1)}
+                  className="h-[50px] rounded-xl w-full border mx-auto text-black mt-4"
+                >
+                  {activeCardId === 1
+                    ? "Diğer Konuya Geç"
+                    : "Önceki Konuya Dön"}
+                </button>
+              </div>
             )}
+
             {!startGame && (
               <button
-                disabled={isLastText}
-                onClick={handleNextText}
-                className=" my-auto w-12 md:w-16 lg:w-20 xl:w-24 shadow-none  select-none lg:mb-32  "
+                onClick={() => setShowLessonText(false)}
+                className="h-14 w-full border border-blue-500 bg-blue-600 text-white rounded-xl font-semibold flex justify-center items-center gap-4"
               >
-                <img
-                  src="https://freesvg.org/storage/img/thumb/arrow-right.png"
-                  alt="Next"
-                />
+                <FaArrowRight size={24} />
+                Sesli Tanıtıma Geri Dön
               </button>
             )}
           </div>
-          {startGame && (
-            <div className="">
-              {/* z-50 w-full h-full flex flex-col items-center justify-center mr-12 xl:mr-24 2xl:mr-48  */}
-              {activeCardId === 1 ? <Game /> : <GPTtest />}
-              <button
-                onClick={() => handleCardChange(activeCardId === 1 ? 2 : 1)}
-                className="h-[50px] rounded-xl w-full border mx-auto text-black mt-4"
-              >
-                {activeCardId === 1 ? "Diğer Konuya Geç" : "Önceki Konuya Dön"}
-              </button>
-            </div>
-          )}
-        </div>
+        )}
       </div>
       <Analytics />
+      {/* <div>
+        <AudioPlayer onAudioEnd={handleAudioEnd} />
+        {showLessonText && (
+          <div>
+            <h1>Yapay Zeka ve Prompt Mühendisliği Dersi</h1>
+            <p>
+              Bu dersimizde yapay zekanın temellerini ve prompt mühendisliğini
+              öğreneceğiz.
+            </p>
+          </div>
+        )}
+      </div> */}
     </div>
   );
 };

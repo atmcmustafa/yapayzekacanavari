@@ -4,6 +4,12 @@ import { useAuth } from "../context/Auth";
 import { useState } from "react";
 import { HiOutlineBars3BottomRight } from "react-icons/hi2";
 import { IoMdClose } from "react-icons/io";
+import { PiSignIn } from "react-icons/pi";
+import { IoIosPaper } from "react-icons/io";
+import { MdLanguage } from "react-icons/md";
+import { FaRegUser } from "react-icons/fa";
+import { IoMdExit } from "react-icons/io";
+
 const HeaderIlkogretim = () => {
   const { currentUser, signOutUser } = useAuth();
 
@@ -13,7 +19,7 @@ const HeaderIlkogretim = () => {
     <div className="bg-header ">
       {/* overlay */}
       {toggle && (
-        <div className="absolute inset-0 bg-black/40 h-screen w-screen overflow-hidden z-50"></div>
+        <div className="absolute inset-0 bg-black/40 min-h-screen w-screen overflow-hidden z-50"></div>
       )}
       {/* overlay */}
       <header className="relative justify-between z-[500]   container mx-auto px-4 sm:px-6 lg:px-8 flex items-center h-20 md:h-28 text-white font-medium text-sm py-8">
@@ -54,21 +60,58 @@ const HeaderIlkogretim = () => {
                   </a>
                 </div>
               </nav>
-              <div className="flex gap-4 items-center h-full flex-wrap">
-                <div className="flex flex-col gap-4  justify-center mx-auto  h-full flex-wrap">
-                  <a href="/login">
-                    <button className="child-button">Giriş Yap</button>
+              {currentUser ? (
+                <div className="flex flex-col  gap-4 items-center justify-center h-full ">
+                  <a href="/userprofile">
+                    <button className="child-button">
+                      <span className="flex items-center gap-2">
+                        <FaRegUser size={24} /> Profil
+                      </span>
+                    </button>
                   </a>
-                  <a href="/register">
-                    <button className="child-button-2">Kayıt Ol</button>
-                  </a>
-
+                  <button
+                    className="child-button-2 !bg-red-600 !text-white !border-red-400"
+                    onClick={signOutUser}
+                  >
+                    <span className="flex items-center gap-2">
+                      <IoMdExit />
+                      Çıkış Yap
+                    </span>
+                  </button>
                   <select className="text-black outline-none rounded child-select">
+                    <MdLanguage size={24} />
+
                     <option value="deneme">Türkçe</option>
                     <option value="deneme">English</option>
                   </select>
                 </div>
-              </div>
+              ) : (
+                <div className="flex gap-4 items-center h-full flex-wrap">
+                  <div className="flex flex-col gap-4  justify-center mx-auto  h-full flex-wrap">
+                    <a href="/login">
+                      <button className="child-button">
+                        <span className="flex items-center gap-2">
+                          <PiSignIn size={24} /> Giriş Yap
+                        </span>
+                      </button>
+                    </a>
+                    <a href="/register">
+                      <button className="child-button-2">
+                        <span className="flex items-center gap-2">
+                          <IoIosPaper size={24} /> Kayıt Ol
+                        </span>
+                      </button>
+                    </a>
+
+                    <select className="text-black outline-none rounded child-select">
+                      <MdLanguage size={24} />
+
+                      <option value="deneme">Türkçe</option>
+                      <option value="deneme">English</option>
+                    </select>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         ) : (
@@ -80,43 +123,62 @@ const HeaderIlkogretim = () => {
         )}
 
         {currentUser ? (
-          <div className="flex gap-4 items-center justify-center h-full ">
-            <a href="/userprofile">
-              <button className="btn flex items-center btn-purple">
-                Profil
+          <>
+            <div className="hidden md:flex gap-4 items-center justify-center h-full ">
+              <a href="/userprofile">
+                <button className="child-button">
+                  <span className="flex items-center gap-2">
+                    <FaRegUser size={24} /> Profil
+                  </span>
+                </button>
+              </a>
+              <button
+                className="child-button-2 !bg-red-600 !text-white !border-red-400"
+                onClick={signOutUser}
+              >
+                <span className="flex items-center gap-2">
+                  <IoMdExit />
+                  Çıkış Yap
+                </span>
               </button>
-            </a>
-            <button
-              className="border !border-gray-500 btn !text-white !shadow-none !bg-transparent"
-              onClick={signOutUser}
+            </div>
+            <div
+              onClick={() => setToggle((prev) => !prev)}
+              className="md:hidden block"
             >
-              Çıkış Yap
-            </button>
-          </div>
+              {toggle ? (
+                <IoMdClose size={36} />
+              ) : (
+                <HiOutlineBars3BottomRight
+                  className="text-orange-600"
+                  size={36}
+                />
+              )}
+            </div>
+          </>
         ) : (
           <>
             <div className="flex gap-4 items-center h-full flex-wrap">
               <div className="hidden md:flex gap-4 items-center h-full flex-wrap">
-                {/* <Button
-                href={"/login"}
-                className={"btn-translucent  cursor-pointer !text-black"}
-              >
-                Giriş Yap
-              </Button> */}
                 <a href="/login">
-                  <button className="child-button">Giriş Yap</button>
+                  <button className="child-button">
+                    <span className="flex items-center gap-2">
+                      <PiSignIn size={24} /> Giriş Yap
+                    </span>
+                  </button>
                 </a>
                 <a href="/register">
-                  <button className="child-button-2">Kayıt Ol</button>
+                  <button className="child-button-2">
+                    <span className="flex items-center gap-2">
+                      <IoIosPaper size={24} /> Kayıt Ol
+                    </span>
+                  </button>
                 </a>
 
-                {/* <Button
-                href={"/register"}
-                className={"btn-purple cursor-pointer "}
-              >
-                Kayıt Ol
-              </Button> */}
                 <select className="text-black outline-none rounded child-select">
+                  <span>
+                    <MdLanguage size={24} />
+                  </span>
                   <option value="deneme">Türkçe</option>
                   <option value="deneme">English</option>
                 </select>

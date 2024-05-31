@@ -1,4 +1,7 @@
 import { Analytics } from "@vercel/analytics/react";
+import HeaderIlkogretim from "../components/HeaderIlkogretim";
+import Layer from "../components/Layer";
+import { IoIosPaper } from "react-icons/io";
 
 const Terms = () => {
   const data = [
@@ -44,21 +47,28 @@ const Terms = () => {
 
   return (
     <>
-      {/* <Header /> */}
+      <HeaderIlkogretim />
+      <Layer />
 
-      <div className="container mx-auto min-h-scren mt-auto">
+      <div className="container mx-auto min-h-scren border mt-12 p-4">
         {data.map((item, index) => (
           <div className="" key={index}>
-            <h1 className="mt-4">{item.title}</h1>
+            <h1 className="mt-4 text-black">{item.title}</h1>
             {item.sections.map((item, index) => (
               <ul className="flex flex-col gap-1 my-3" key={index}>
-                <h2 className="">{item.subtitle}</h2>
-                <li className="text-gray-400">{item.text}</li>
+                <h3 className="text-black">{item.subtitle}</h3>
+                <li className="text-gray-600 text-sm">{item.text}</li>
               </ul>
             ))}
           </div>
         ))}
-
+        <a href="/register">
+          <button className="child-button-2 !bg-blue-600 !border-blue-400 !text-white">
+            <span className="flex items-center gap-2">
+              <IoIosPaper size={24} /> Kayıt Ol Sayfasına Geri Dön
+            </span>
+          </button>
+        </a>
         <Analytics />
       </div>
     </>

@@ -6,6 +6,8 @@ import { FcGoogle } from "react-icons/fc";
 import toast, { Toaster } from "react-hot-toast";
 import Header from "../components/Header";
 import { Analytics } from "@vercel/analytics/react";
+import Layer from "../components/Layer";
+import HeaderIlkogretim from "../components/HeaderIlkogretim";
 
 const validate = (values) => {
   const errors = {};
@@ -62,24 +64,27 @@ const Login = () => {
 
   return (
     <>
-      <Header />
+      <HeaderIlkogretim />
+      <Layer />
       <div className=" mt-4 px-4 md:px-0 md:mt-32 items-center justify-center bg-login-image relative container mx-auto text-white">
         <Toaster position="top-center" reverseOrder={false} />
         <form
-          className="flex flex-col mx-auto border text-black shadow-xl  border-gray-700 my-24 max-w-3xl w-full rounded-xl p-7"
+          className="flex flex-col mx-auto border text-black shadow-xl mt-20  border-gray-700 xl:max-w-xl 2xl:max-w-2xl w-full rounded-xl p-7"
           onSubmit={formik.handleSubmit}
         >
           <h1 className="mx-auto text-3xl mb-4 text-black">Giriş Yap</h1>
 
           <div className="flex flex-col justify-center mb-4 relative ">
-            <div className="absolute -top-44 -right-12 -z-2">
+            <div className="absolute -top-32 md:-top-44 -right-12 -z-2">
               <img
+                className="w-full h-24 md:h-full"
                 src="https://freesvg.org/storage/img/thumb/construction-girl.png"
                 alt=""
               />
             </div>
-            <div className="absolute -bottom-[420px] -left-8 -z-2">
+            <div className="absolute -bottom-[350px] sm:-bottom-[420px] -left-8 -z-2">
               <img
+                className="w-full h-24 md:h-full"
                 src="https://freesvg.org/storage/img/thumb/CipyMail.png"
                 alt="kid"
               />

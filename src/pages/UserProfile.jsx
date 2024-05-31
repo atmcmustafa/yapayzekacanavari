@@ -7,6 +7,7 @@ import { uploadProfilePicture } from "../firebase-config.js";
 import Header from "../components/Header.jsx";
 import { Analytics } from "@vercel/analytics/react";
 import Layer from "../components/Layer.jsx";
+import HeaderIlkogretim from "../components/HeaderIlkogretim.jsx";
 const UserProfile = () => {
   const { currentUser, signOutUser } = useAuth();
   const navigate = useNavigate();
@@ -91,7 +92,7 @@ const UserProfile = () => {
     <>
       {currentUser ? (
         <div className=" container mx-auto p-4 md:p-0">
-          <Header />
+          <HeaderIlkogretim />
           <Layer />
           <div className="p-7 rounded-xl border border-gray-700 text-orange-600 mt-8 lg:mt-24">
             <div className="flex flex-col relative gap-4 md:gap-4 md:flex-row justify-between  ">
@@ -234,14 +235,23 @@ const UserProfile = () => {
               </div>
               <div>
                 {currentUser && (
-                  <>
+                  <div className="flex flex-col gap-4">
+                    <a href="/home">
+                      <button
+                        className="child-button-2 !bg-blue-600 !text-white !border-blue-400 "
+                        onClick={signOutUser}
+                      >
+                        Ana Sayfaya Dön
+                      </button>
+                    </a>
+
                     <button
-                      className="border absolute md:relative right-0 top-0 !border-gray-500 btn !text-white !shadow-none !bg-transparent"
+                      className="child-button-2 !bg-red-600 !text-white !border-red-400"
                       onClick={signOutUser}
                     >
                       Çıkış Yap
                     </button>
-                  </>
+                  </div>
                 )}
               </div>
             </div>
