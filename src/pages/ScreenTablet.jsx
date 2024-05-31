@@ -168,7 +168,7 @@ const ScreenTablet = () => {
             </div>
             <div className="w-full">
               <AudioPlayer
-                src={"/audio.m4a"}
+                src={"/audio-new.mp3"}
                 goToMain={goToMain}
                 onAudioEnd={handleAudioEnd}
               />
