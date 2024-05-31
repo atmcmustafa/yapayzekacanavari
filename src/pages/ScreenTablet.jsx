@@ -262,7 +262,7 @@ const ScreenTablet = () => {
             {!startGame && (
               <button
                 onClick={() => setShowLessonText(false)}
-                className="h-14 w-full border border-blue-500 bg-blue-600 text-white rounded-xl font-semibold flex justify-center items-center gap-4"
+                className="h-14 w-full max-w-lg border border-blue-500 bg-blue-600 text-white rounded-xl font-semibold flex justify-center items-center gap-4 xl:mt-16"
               >
                 <FaArrowRight size={24} />
                 Sesli Tanıtıma Geri Dön
