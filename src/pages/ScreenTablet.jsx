@@ -9,6 +9,7 @@ import { FaArrowRight } from "react-icons/fa";
 import { BiInfoCircle } from "react-icons/bi";
 import { IoGameControllerOutline } from "react-icons/io5";
 import { FaArrowLeft } from "react-icons/fa";
+import NewGame from "../components/NewGame";
 
 const cardsData = [
   {
@@ -260,10 +261,16 @@ const ScreenTablet = () => {
             </div>
             {startGame && (
               <div>
-                {activeCardId === 1 ? <Game /> : <GPTtest />}
+                {activeCardId === 1 ? (
+                  <div className="w-full h-full z-50 !mr-24">
+                    <NewGame />
+                  </div>
+                ) : (
+                  <GPTtest />
+                )}
                 <button
                   onClick={() => handleCardChange(activeCardId === 1 ? 2 : 1)}
-                  className="h-[50px] rounded-xl w-full border mx-auto text-black mt-4"
+                  className="h-[50px] rounded-xl  w-full lg:w-[50vw] 2xl:w-[50vw] border mx-auto text-black mt-4"
                 >
                   {activeCardId === 1
                     ? "Diğer Konuya Geç"
@@ -285,18 +292,6 @@ const ScreenTablet = () => {
         )}
       </div>
       <Analytics />
-      {/* <div>
-        <AudioPlayer onAudioEnd={handleAudioEnd} />
-        {showLessonText && (
-          <div>
-            <h1>Yapay Zeka ve Prompt Mühendisliği Dersi</h1>
-            <p>
-              Bu dersimizde yapay zekanın temellerini ve prompt mühendisliğini
-              öğreneceğiz.
-            </p>
-          </div>
-        )}
-      </div> */}
     </div>
   );
 };
