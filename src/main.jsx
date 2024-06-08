@@ -12,6 +12,10 @@ import ScreenTablet from "./pages/ScreenTablet.jsx";
 import WelcomeGif from "./pages/WelcomeGif.jsx";
 import ErrorPage from "./pages/ErrorPage.jsx";
 import NewGame from "./components/NewGame.jsx";
+import GamesList from "./pages/GamesList.jsx";
+import PuzzleRobot from "./pages/PuzzleRobot.jsx";
+import BaloonPop from "./pages/BaloonPop.jsx";
+import PromptTest from "./pages/PromptTest.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <AuthProvider>
@@ -22,6 +26,10 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <Route path="/home" element={<ScreenTablet />} />
         <Route path="/gizlilik_sozlesmesi" element={<Terms />} />
         <Route path="/newGame" element={<NewGame />} />
+        <Route path="/gameList" element={<GamesList />} />
+        <Route path="/robot-puzzle" element={<PuzzleRobot />} />
+        <Route path="/baloon-pop" element={<BaloonPop />} />
+        <Route path="/prompt-test" element={<PromptTest />} />
         <Route path="*" element={<ErrorPage />} />
 
         <Route
