@@ -1,145 +1,15 @@
 import { useEffect, useRef, useState } from "react";
 import Confetti from "react-confetti";
+import GameMap from "./GameMap";
+import { TiTick } from "react-icons/ti";
+import { SiFuturelearn } from "react-icons/si";
+import { IoTimerOutline } from "react-icons/io5";
+import { useBalloonQuestions } from "../context/BallonQuestionContext";
 
-const questions = [
-  {
-    question: "Yapay zeka, hangi bilim dalının bir alt dalıdır?",
-    answers: ["Bilgisayar bilimleri", "Psikoloji", "Fizik"],
-    correct: 0,
-  },
-  {
-    question: "Yapay zeka, bilgisayarların ne yapabilmesini sağlar?",
-    answers: [
-      "Uyumalarını",
-      "Düşünmelerini ve öğrenmelerini",
-      "Yemek yapmalarını",
-    ],
-    correct: 1,
-  },
-  {
-    question: "Yapay zekanın en yaygın kullanıldığı yerlerden biri nedir?",
-    answers: ["Sesli asistanlar", "Otomobiller", "El fenerleri"],
-    correct: 0,
-  },
-  {
-    question: "Siri ve Alexa ne tür yapay zeka örnekleridir?",
-    answers: ["Robot", "Sesli asistan", "Bilgisayar oyunu"],
-    correct: 1,
-  },
-  {
-    question: "Bir bilgisayar oyununda yapay zeka ne yapar?",
-    answers: [
-      "Müzik çalar",
-      "Oyun oynar",
-      "Rakiplerimizi daha akıllı hale getirir",
-    ],
-    correct: 2,
-  },
-  {
-    question: "Yapay zeka, doktorlara nasıl yardımcı olabilir?",
-    answers: [
-      "Hastalıkları teşhis ederek",
-      "Ameliyat yaparak",
-      "Reçete yazarak",
-    ],
-    correct: 0,
-  },
-  {
-    question:
-      "Öneri sistemleri, izlediğimiz veya dinlediğimiz şeylere göre bize ne yapar?",
-    answers: ["Yeni şarkılar ve videolar önerir", "Kahve yapar", "Kitap okur"],
-    correct: 0,
-  },
-  {
-    question: "Yapay zeka, bir resimdeki kediyi tanımayı nasıl öğrenir?",
-    answers: ["Birçok kedi resmi görerek", "Kitap okuyarak", "Uyuyarak"],
-    correct: 0,
-  },
-  {
-    question: "Google Asistan, hangi şirketin sesli asistanıdır?",
-    answers: ["Apple", "Google", "Amazon"],
-    correct: 1,
-  },
-  {
-    question: "Yapay zeka, hangi cihazlarda bulunabilir?",
-    answers: ["Akıllı telefonlar", "El fenerleri", "Çiçek vazoları"],
-    correct: 0,
-  },
-  {
-    question:
-      "Eğer bir yapay zeka robotuna 'En sevdiğin renk ne?' diye sorarsak, ne yapar?",
-    answers: [
-      "Cevap vermez",
-      "Öğrendiği bilgilere göre cevap verir",
-      "Şarkı söyler",
-    ],
-    correct: 1,
-  },
-  {
-    question: "Yapay zeka robotları nasıl öğrenir?",
-    answers: ["Kitap okuyarak ve izleyerek", "Oyun oynayarak", "Uyuyarak"],
-    correct: 0,
-  },
-  {
-    question: "Bir resim tanıma oyunu ile yapay zeka ne yapabilir?",
-    answers: ["Nesneleri tanıyabilir", "Kitap yazabilir", "Dans edebilir"],
-    correct: 0,
-  },
-  {
-    question: "Chatbot nedir?",
-    answers: [
-      "Yemek pişiren bir robot",
-      "Sizinle konuşabilen bir bilgisayar programı",
-      "Müzik çalan bir cihaz",
-    ],
-    correct: 1,
-  },
-  {
-    question: "Yapay zeka gelecekte ne yapabilir?",
-    answers: [
-      "Ev işlerinde yardımcı olabilir",
-      "Uzaya gidebilir",
-      "Yemek pişirebilir",
-    ],
-    correct: 0,
-  },
-  {
-    question: "Yapay zeka ile ilgili hikayeler yazmak neye yardımcı olabilir?",
-    answers: ["Hayal gücümüzü geliştirmeye", "Uyumaya", "Koşmaya"],
-    correct: 0,
-  },
-  {
-    question: "Netflix, hangi yapay zeka türünü kullanarak önerilerde bulunur?",
-    answers: ["Öneri sistemleri", "Sesli asistanlar", "Robotlar"],
-    correct: 0,
-  },
-  {
-    question: "Bir yapay zeka öğretmen, öğrencilere nasıl yardımcı olabilir?",
-    answers: [
-      "Dersleri anlatabilir",
-      "Ev ödevlerini yapabilir",
-      "Müzik dinletebilir",
-    ],
-    correct: 0,
-  },
-  {
-    question: "Yapay zeka robotları neyi yapamaz?",
-    answers: ["Düşünebilir", "Öğrenebilir", "Yemek yiyebilir"],
-    correct: 2,
-  },
-  {
-    question: "Yapay zeka ile ilgili en heyecan verici şey nedir?",
-    answers: [
-      "İnsanlar gibi düşünüp öğrenebilmesi",
-      "Uyuması",
-      "Yemek pişirmesi",
-    ],
-    correct: 0,
-  },
-];
 const colors = ["#FF6384", "#36A2EB", "#FFCE56", "#4BC0C0", "#9966FF"];
 
 function NewGame() {
+  const { currentQuestions } = useBalloonQuestions(); // Soruları context'ten alın
   const canvasRef = useRef(null);
   const containerRef = useRef(null);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -163,11 +33,11 @@ function NewGame() {
 
   useEffect(() => {
     if (gameStarted) {
-      const newQuestions = getRandomQuestions(questions, 5);
+      const newQuestions = getRandomQuestions(currentQuestions, 5);
       setSelectedQuestions(newQuestions);
       resetGame(newQuestions);
     }
-  }, [gameStarted]);
+  }, [gameStarted, currentQuestions]);
 
   useEffect(() => {
     let animationFrameId;
@@ -390,20 +260,45 @@ function NewGame() {
     return shuffled.slice(0, numQuestions);
   };
 
+  const sections = [
+    {
+      icon: TiTick,
+      text: "Kombo Yap",
+      bgColor: "bg-sky-600",
+    },
+    {
+      icon: IoTimerOutline,
+      text: "Karşı Koy",
+      bgColor: "bg-green-600",
+    },
+    {
+      icon: SiFuturelearn,
+      text: "Öğren",
+      bgColor: "bg-yellow-500",
+    },
+  ];
+
+  const description = [
+    "1. Oyunun amacı soruların cevaplarını uçan balonlardan yakalamaktır.",
+    "2. 20 Adet soru ile karşı karşıya kalacaksın. Eğer 5 adet doğru cevap verebilirsen robot ortaya çıkacak.",
+    "3. İstediğin kadar deneme hakkına sahipsin.",
+    "4. Daha fazla ne bekliyorsun? Oyunu Başlat butonuna tıkla ve macerayı başlat!",
+  ];
+
+  const handleButtonClick = () => {
+    setGameStarted(true);
+  };
+
   if (!gameStarted) {
     return (
-      <div className="w-full w-full lg:w-[50vw] 2xl:w-[50vw] flex items-center justify-center">
-        <button
-          onClick={() => setGameStarted(true)}
-          className="glow-on-hover w-full lg:w-[50vw] 2xl:w-[50vw]"
-        >
-          <a
-            href="#game-area"
-            className="h-full  flex items-center justify-center"
-          >
-            Oyunu Başlat
-          </a>
-        </button>
+      <div className="w-full">
+        <GameMap
+          sections={sections}
+          title="Yol Haritası"
+          description={description}
+          buttonText="Oyunu Başlat"
+          onButtonClick={handleButtonClick}
+        />
       </div>
     );
   }
@@ -435,7 +330,7 @@ function NewGame() {
           onClick={handleCanvasClick}
         ></canvas>
         {gameCompleted && (
-          <div className="game-over flex text-center flex-col absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white text-green-500 p-5 border-3 border-green-500 rounded-lg text-xl !z-50">
+          <div className="game-over flex text-center flex-col absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white text-green-500 p-5 border-3 border-green-500 rounded-lg text-xl !z-50 try-again max-w-4xl px-8">
             {gameResult}
             <button
               className="retry-button mt-5 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"

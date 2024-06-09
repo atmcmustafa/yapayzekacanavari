@@ -21,6 +21,12 @@ import { FaCircleInfo } from "react-icons/fa6";
 import toast from "react-hot-toast";
 import loadingBar from "/loading.gif";
 import { FaQuestionCircle } from "react-icons/fa";
+import GameMap from "./GameMap";
+import { TiTick } from "react-icons/ti";
+import { SiFuturelearn } from "react-icons/si";
+import { IoTimerOutline } from "react-icons/io5";
+import { PiGpsFixBold } from "react-icons/pi";
+import { FaQuestion } from "react-icons/fa";
 
 const GPTtest = () => {
   const [prompt, setPrompt] = useState("");
@@ -151,22 +157,61 @@ const GPTtest = () => {
       doc.save("sertifika.pdf");
     };
   };
+  const sections = [
+    {
+      icon: TiTick,
+      text: "Kombo Yap",
+      bgColor: "bg-sky-600",
+    },
+    {
+      icon: PiGpsFixBold,
+      text: "Teknik Öğren",
+      bgColor: "bg-green-600",
+    },
+    {
+      icon: FaQuestion,
+      text: "Doğru Sorular Sor",
+      bgColor: "bg-yellow-500",
+    },
+  ];
+
+  const description = [
+    "1. Oyunun amacı prompt mühendisliği konusunda öğrendiğin konuları pekiştirmektir.",
+    "2. Öğrendiğin teknikler ile sorular sor.",
+    "3. Eğer 10 adet doğru sorar isen sana özel tasarladığımız sertifikaya sahip olacaksın.",
+    "4. Sertifikaya ulaşmak istiyorsan giriş yap butonundan giriş yapmayı unutma.",
+    "5. İstediğin kadar deneme hakkına sahipsin.",
+    "6. Daha fazla ne bekliyorsun? Oyunu Başlat butonuna tıkla ve macerayı başlat!",
+  ];
+
+  const handleButtonClick = () => {
+    setGameStarted(true);
+  };
 
   if (!gameStarted) {
     return (
-      <div className="w-full flex items-center justify-center ">
-        <button
-          onClick={() => setGameStarted(true)}
-          className=" glow-on-hover !w-[300px]"
-        >
-          <a
-            href="#gpt-test"
-            className="h-full w-full flex items-center justify-center"
-          >
-            Oyunu Başlat
-          </a>
-        </button>
+      <div className="w-full">
+        <GameMap
+          sections={sections}
+          title="Yol Haritası"
+          description={description}
+          buttonText="Oyunu Başlat"
+          onButtonClick={handleButtonClick}
+        />
       </div>
+      // <div className="w-full flex items-center justify-center ">
+      //   <button
+      //     onClick={() => setGameStarted(true)}
+      //     className=" glow-on-hover w-full flex-1"
+      //   >
+      //     <a
+      //       href="#gpt-test"
+      //       className="h-full w-full flex items-center justify-center"
+      //     >
+      //       Oyunu Başlat
+      //     </a>
+      //   </button>
+      // </div>
     );
   }
 

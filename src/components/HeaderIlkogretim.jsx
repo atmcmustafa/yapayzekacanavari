@@ -86,7 +86,7 @@ const HeaderIlkogretim = () => {
           className="relative items-center flex text-2xl lg:mt-8 h-full"
         >
           <div className="">
-            <a className="logo" href="/">
+            <a className="logo" href="/home">
               <img
                 loading="lazy"
                 className="w-20 h-20 mt-4 md:w-36 md:h-36 rounded-full"

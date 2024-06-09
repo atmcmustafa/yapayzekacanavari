@@ -441,3 +441,28 @@ h6 {
 canvas {
   display: block;
 }
+
+
+
+/* gamemap bg img */
+.background-img {
+background: url("/background-img.svg");
+background-size: cover;
+width: 100%;
+object-fit: cover;
+}
+/* gamemap bg img */
+
+.try-again {
+background: url("/try-again.svg");
+background-size: cover;
+width: 100%;
+object-fit: cover;
+}
+
+.orange-bg {
+  background: url("/orange-bg.svg");
+  background-size: cover;
+  width: 100%;
+  object-fit: cover;
+}
