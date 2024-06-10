@@ -21,7 +21,7 @@ const GameMap = ({
         ))}
       </div>
       <div className="px-4">
-        <div className="p-4 rounded bg-orange-600 max-w-xl md:max-w-5xl w-full flex flex-col items-center mt-4  mx-auto background-img">
+        <div className="p-4 rounded bg-orange-600 max-w-xl md:max-w-5xl w-full flex flex-col items-center mt-4  mx-auto ">
           <h2 className="mb-2 text-center text-3xl">{title}</h2>
           <div className="flex flex-col gap-2 text-white text-base md:text-xl">
             {description.map((desc, index) => (
