@@ -29,14 +29,15 @@ const Balloon = ({ text, onAnswer, left, isPopped, onEscape, resetBottom }) => {
   if (isPopped) {
     return null;
   }
-
+  // bg-blue-400 w-24 h-24 rounded-full flex flex-wrap items-center justify-center text-white cursor-pointer
   return (
     <div
-      className="balloon bg-blue-400 w-24 h-24 rounded-full flex flex-wrap items-center justify-center text-white cursor-pointer"
+      className="balloon "
       style={{ left: `${left}px`, bottom: `${bottom}px`, position: "absolute" }}
       onClick={onAnswer}
     >
       {text}
+      
     </div>
   );
 };

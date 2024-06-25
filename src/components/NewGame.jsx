@@ -5,6 +5,13 @@ import { TiTick } from "react-icons/ti";
 import { SiFuturelearn } from "react-icons/si";
 import { IoTimerOutline } from "react-icons/io5";
 import { useBalloonQuestions } from "../context/BallonQuestionContext";
+import AudioBallon from "../../public/game-sound.mp3";
+import AudioCorrect from "../../public/game-correct.mp3";
+import AudioBonus from "../../public/game-bonus.mp3";
+import AudioOver from "../../public/game-over.mp3";
+import backgroundImg from "../../public/space.jpg"
+import char from "../../public/robot1.png"
+
 
 const colors = ["#FF6384", "#36A2EB", "#FFCE56", "#4BC0C0", "#9966FF"];
 
@@ -31,11 +38,32 @@ function NewGame() {
     );
   };
 
+  const playSound = () => {
+    const audio = new Audio(AudioBallon);
+    audio.play();
+  };
+
+  const playSound2 = () => {
+    const audio2 = new Audio(AudioCorrect);
+    audio2.play();
+  };
+
+  const playSound3 = () => {
+    const audio3 = new Audio(AudioBonus);
+    audio3.play();
+  };
+
+  const playSound4 = () => {
+    const audio4 = new Audio(AudioOver);
+    audio4.play();
+  };
+
   useEffect(() => {
     if (gameStarted) {
       const newQuestions = getRandomQuestions(currentQuestions, 5);
       setSelectedQuestions(newQuestions);
       resetGame(newQuestions);
+     
     }
   }, [gameStarted, currentQuestions]);
 
@@ -57,6 +85,7 @@ function NewGame() {
         drawQuestion(context, selectedQuestions[currentQuestionIndex]);
         drawBalloons(context);
         animationFrameId = requestAnimationFrame(render);
+       
       }
     };
 
@@ -74,6 +103,7 @@ function NewGame() {
     }, 20);
 
     return () => clearInterval(interval);
+    
   }, [balloons]);
 
   useEffect(() => {
@@ -92,6 +122,7 @@ function NewGame() {
       const maxWidth = canvasRef.current.width - 40;
       const x = canvasRef.current.width / 2;
       const y = fontSize + 20;
+     
 
       const words = question.question.split(" ");
       let line = "";
@@ -148,6 +179,7 @@ function NewGame() {
         context.closePath();
         context.fillStyle = color;
         context.fill();
+        
 
         context.fillStyle = "black";
         context.textAlign = "center";
@@ -192,6 +224,7 @@ function NewGame() {
       ) {
         setGameCompleted(true);
         setGameResult("Tekrar deneyiniz!");
+        playSound4();
       }
     }
   };
@@ -206,7 +239,8 @@ function NewGame() {
         Math.hypot(balloon.x - offsetX, balloon.y - offsetY) <= balloonRadius
       ) {
         handleAnswer(index);
-        setBackgroundColor(balloons[index].color);
+        // setBackgroundColor(balloons[index].color);
+        playSound();
       }
     });
   };
@@ -216,13 +250,16 @@ function NewGame() {
       setShowConfetti(true);
       setTimeout(() => setShowConfetti(false), 2000);
       setScore(score + 1);
+      
       if (currentQuestionIndex + 1 < selectedQuestions.length) {
         setCurrentQuestionIndex(currentQuestionIndex + 1);
         resetBalloons(selectedQuestions[currentQuestionIndex + 1].answers);
+        playSound2();
       } else {
         if (score + 1 >= 1) {
           setGameResult("Tebrikler! Oyunu kazandınız!");
           setGameCompleted(true);
+          playSound3();
         } else {
           setGameCompleted(true);
         }
@@ -306,11 +343,11 @@ function NewGame() {
   if (selectedQuestions.length === 0) {
     return null;
   }
-
+  // style={{ backgroundColor: backgroundColor }}
   return (
     <div
       className="h-[75vh] w-full lg:w-[50vw] 2xl:w-[50vw]  "
-      style={{ backgroundColor: backgroundColor }}
+      style={{ backgroundImage: `url(${backgroundImg})`,backgroundSize: 'cover', backgroundPosition: 'center' }}
     >
       <div
         id="game-area"
@@ -337,7 +374,7 @@ function NewGame() {
               onClick={() => {
                 setGameStarted(false);
                 setBalloons([]);
-                setBackgroundColor("#FFFFFF");
+                // setBackgroundColor("#FFFFFF");
               }}
             >
               Yeniden Başla
