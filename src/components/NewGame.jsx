@@ -5,12 +5,13 @@ import { TiTick } from "react-icons/ti";
 import { SiFuturelearn } from "react-icons/si";
 import { IoTimerOutline } from "react-icons/io5";
 import { useBalloonQuestions } from "../context/BallonQuestionContext";
-import AudioBallon from "../../public/game-sound.mp3";
-import AudioCorrect from "../../public/game-correct.mp3";
-import AudioBonus from "../../public/game-bonus.mp3";
-import AudioOver from "../../public/game-over.mp3";
-import backgroundImg from "../../public/space.jpg"
-import char from "../../public/robot1.png"
+import AudioBallon from "../../public/sounds/game-sound.mp3";
+import AudioCorrect from "../../public/sounds/game-correct.mp3";
+import AudioBonus from "../../public/sounds/game-bonus.mp3";
+import AudioOver from "../../public/sounds/game-over.mp3";
+import backgroundImg from "../../public/img/space.jpg"
+import char from "../../public/img/robot1.png";
+
 
 
 const colors = ["#FF6384", "#36A2EB", "#FFCE56", "#4BC0C0", "#9966FF"];
@@ -67,34 +68,63 @@ function NewGame() {
     }
   }, [gameStarted, currentQuestions]);
 
+  // useEffect(() => {
+  //   let animationFrameId;
+
+  //   const render = () => {
+  //     if (canvasRef.current && selectedQuestions.length > 0) {
+  //       const canvas = canvasRef.current;
+  //       const context = canvas.getContext("2d");
+
+  //       const container = containerRef.current;
+  //       if (container) {
+  //         canvas.width = container.clientWidth;
+  //         canvas.height = container.clientHeight;
+  //       }
+
+  //       context.clearRect(0, 0, canvas.width, canvas.height);
+  //       drawQuestion(context, selectedQuestions[currentQuestionIndex]);
+  //       drawBalloons(context);
+  //       animationFrameId = requestAnimationFrame(render);
+       
+  //     }
+  //   };
+
+  //   if (selectedQuestions.length > 0) {
+  //     render();
+  //   }
+
+  //   return () => cancelAnimationFrame(animationFrameId);
+  // }, [currentQuestionIndex, selectedQuestions, balloons]);
+
   useEffect(() => {
     let animationFrameId;
-
+  
     const render = () => {
       if (canvasRef.current && selectedQuestions.length > 0) {
         const canvas = canvasRef.current;
         const context = canvas.getContext("2d");
-
+  
         const container = containerRef.current;
         if (container) {
           canvas.width = container.clientWidth;
           canvas.height = container.clientHeight;
         }
-
+  
         context.clearRect(0, 0, canvas.width, canvas.height);
         drawQuestion(context, selectedQuestions[currentQuestionIndex]);
-        drawBalloons(context);
+        drawCharacters(context); // drawBalloons yerine drawCharacters çağrılıyor
         animationFrameId = requestAnimationFrame(render);
-       
       }
     };
-
+  
     if (selectedQuestions.length > 0) {
       render();
     }
-
+  
     return () => cancelAnimationFrame(animationFrameId);
   }, [currentQuestionIndex, selectedQuestions, balloons]);
+  
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -146,72 +176,140 @@ function NewGame() {
     }
   };
 
-  const drawBalloons = (context) => {
-    const balloonRadius =
-      Math.min(canvasRef.current.width, canvasRef.current.height) / 12;
-    const neckHeight = balloonRadius / 2;
-    const neckWidth = balloonRadius / 3;
+  // const drawBalloons = (context) => {
+  //   const balloonRadius =
+  //     Math.min(canvasRef.current.width, canvasRef.current.height) / 12;
+  //   const neckHeight = balloonRadius / 2;
+  //   const neckWidth = balloonRadius / 3;
 
-    balloons.forEach((balloon) => {
-      if (!balloon.isPopped) {
-        const { x, y, color, text } = balloon;
+  //   balloons.forEach((balloon) => {
+  //     if (!balloon.isPopped) {
+  //       const { x, y, color, text } = balloon;
 
-        context.beginPath();
-        context.arc(x, y, balloonRadius, 0, Math.PI * 2, true);
-        context.closePath();
-        const gradient = context.createRadialGradient(
-          x,
-          y - balloonRadius / 3,
-          balloonRadius / 5,
-          x,
-          y,
-          balloonRadius
-        );
-        gradient.addColorStop(0, "#FFFFFF");
-        gradient.addColorStop(1, color);
-        context.fillStyle = gradient;
-        context.fill();
+  //       context.beginPath();
+  //       context.arc(x, y, balloonRadius, 0, Math.PI * 2, true);
+  //       context.closePath();
+  //       const gradient = context.createRadialGradient(
+  //         x,
+  //         y - balloonRadius / 3,
+  //         balloonRadius / 5,
+  //         x,
+  //         y,
+  //         balloonRadius
+  //       );
+  //       gradient.addColorStop(0, "#FFFFFF");
+  //       gradient.addColorStop(1, color);
+  //       context.fillStyle = gradient;
+  //       context.fill();
 
-        context.beginPath();
-        context.moveTo(x - neckWidth / 2, y + balloonRadius);
-        context.lineTo(x + neckWidth / 2, y + balloonRadius);
-        context.lineTo(x, y + balloonRadius + neckHeight);
-        context.closePath();
-        context.fillStyle = color;
-        context.fill();
+  //       context.beginPath();
+  //       context.moveTo(x - neckWidth / 2, y + balloonRadius);
+  //       context.lineTo(x + neckWidth / 2, y + balloonRadius);
+  //       context.lineTo(x, y + balloonRadius + neckHeight);
+  //       context.closePath();
+  //       context.fillStyle = color;
+  //       context.fill();
         
 
-        context.fillStyle = "black";
-        context.textAlign = "center";
-        context.font = `${balloonRadius / 3}px Arial`;
+  //       context.fillStyle = "black";
+  //       context.textAlign = "center";
+  //       context.font = `${balloonRadius / 3}px Arial`;
 
-        const words = text.split(" ");
-        let line = "";
-        const lines = [];
-        const maxWidth = balloonRadius * 1.8;
-        words.forEach((word) => {
-          const testLine = line + word + " ";
-          const metrics = context.measureText(testLine);
-          const testWidth = metrics.width;
-          if (testWidth > maxWidth && line.length > 0) {
-            lines.push(line);
-            line = word + " ";
-          } else {
-            line = testLine;
-          }
-        });
-        lines.push(line);
+  //       const words = text.split(" ");
+  //       let line = "";
+  //       const lines = [];
+  //       const maxWidth = balloonRadius * 1.8;
+  //       words.forEach((word) => {
+  //         const testLine = line + word + " ";
+  //         const metrics = context.measureText(testLine);
+  //         const testWidth = metrics.width;
+  //         if (testWidth > maxWidth && line.length > 0) {
+  //           lines.push(line);
+  //           line = word + " ";
+  //         } else {
+  //           line = testLine;
+  //         }
+  //       });
+  //       lines.push(line);
 
-        lines.forEach((line, index) => {
-          context.fillText(
-            line.trim(),
-            x,
-            y - (lines.length - 1) * 10 + index * (balloonRadius / 4)
+  //       lines.forEach((line, index) => {
+  //         context.fillText(
+  //           line.trim(),
+  //           x,
+  //           y - (lines.length - 1) * 10 + index * (balloonRadius / 4)
+  //         );
+  //       });
+  //     }
+  //   });
+  // };
+
+  const drawCharacters = (context) => {
+    const charRadius = Math.min(canvasRef.current.width, canvasRef.current.height) / 10;
+    const img = new Image();
+    img.src = char; // Buraya karakter PNG dosyanızın yolunu ekleyin
+  
+    // Resmin yüklendiğinden emin olun
+    img.onload = () => {
+      balloons.forEach((balloon) => {
+        if (!balloon.isPopped) {
+          const { x, y, text } = balloon;
+  
+          // PNG resmini karakter olarak çiz
+          const imgSize = charRadius * 3.5; // Resmin boyutu
+          context.drawImage(
+            img,
+            x - charRadius,
+            y - charRadius,
+            imgSize,
+            imgSize
           );
-        });
-      }
-    });
+  
+          context.fillStyle = "white";
+          context.textAlign = "center";
+          context.font = `${charRadius / 5}px Arial`;
+  
+          const words = text.split(" ");
+          let line = "";
+          const lines = [];
+          const maxWidth = charRadius * 2;
+          words.forEach((word) => {
+            const testLine = line + word + " ";
+            const metrics = context.measureText(testLine);
+            const testWidth = metrics.width;
+            if (testWidth > maxWidth && line.length > 0) {
+              lines.push(line);
+              line = word + " ";
+            } else {
+              line = testLine;
+            }
+          });
+          lines.push(line);
+  
+          const textHeight = lines.length * (charRadius / 9); // Tüm metin satırlarının toplam yüksekliği
+          const textY = y + charRadius / 2 - textHeight / 9; // Metnin y koordinatını ayarla
+  
+          lines.forEach((line, index) => {
+            context.fillText(
+              line.trim(),
+              x+35,
+              textY + index * (charRadius / 4)
+            );
+          });
+        }
+      });
+    };
+  
+    // Resim hemen yüklendiğinde karakterleri çizmek için
+    if (img.complete) {
+      img.onload();
+    }
   };
+  
+  
+  
+  
+  
+  
 
   const checkBalloonsPosition = () => {
     const canvas = canvasRef.current;
