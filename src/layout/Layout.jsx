@@ -1,9 +1,9 @@
 import Layer from "../components/Layer";
 import HeaderIlkogretim from "../components/HeaderIlkogretim";
 
-const Layout = ({ children }) => {
+const Layout = ({ children, className }) => {
   return (
-    <div>
+    <div className={`${className}`}>
       <Layer />
       <HeaderIlkogretim />
       {children}

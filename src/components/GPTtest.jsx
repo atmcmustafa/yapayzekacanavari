@@ -28,7 +28,7 @@ import { IoTimerOutline } from "react-icons/io5";
 import { PiGpsFixBold } from "react-icons/pi";
 import { FaQuestion } from "react-icons/fa";
 
-const GPTtest = () => {
+const GPTtest = ({ onComplete }) => {
   const [prompt, setPrompt] = useState("");
   const [feedback, setFeedback] = useState("");
   const [feedbackColor, setFeedbackColor] = useState("");
@@ -41,6 +41,9 @@ const GPTtest = () => {
   const { currentUser } = useAuth();
   const [correctCount, setCorrectCount] = useState(0);
   const [gameStarted, setGameStarted] = useState(false);
+
+  // Varsayılan onComplete işlevi
+  const defaultOnComplete = () => console.log("Game completed");
 
   useEffect(() => {
     if (confetti) {
@@ -106,6 +109,7 @@ const GPTtest = () => {
 
       if (newCorrectCount >= 10) {
         setShowDownload(true);
+        (onComplete || defaultOnComplete)(true); // Varsayılan onComplete işlevini kullan
       } else {
         toast.success(`Sertifika almaya ${10 - newCorrectCount} cevap kaldı!`);
       }
@@ -157,6 +161,7 @@ const GPTtest = () => {
       doc.save("sertifika.pdf");
     };
   };
+
   const sections = [
     {
       icon: TiTick,
@@ -199,27 +204,14 @@ const GPTtest = () => {
           onButtonClick={handleButtonClick}
         />
       </div>
-      // <div className="w-full flex items-center justify-center ">
-      //   <button
-      //     onClick={() => setGameStarted(true)}
-      //     className=" glow-on-hover w-full flex-1"
-      //   >
-      //     <a
-      //       href="#gpt-test"
-      //       className="h-full w-full flex items-center justify-center"
-      //     >
-      //       Oyunu Başlat
-      //     </a>
-      //   </button>
-      // </div>
     );
   }
 
   return (
-    <div className="relative overflow-hidden w-full h-full">
+    <div className="relative  w-full h-full">
       <div
         id="gpt-test"
-        className="gpt-test container mx-auto px-4 md:px-0 text-white max-w-5xl xl:max-w-7xl w-full lg:w-[600px] xl:w-[800px] "
+        className="gpt-test container mx-auto px-4 md:px-0 text-white  w-full lg:w-[600px] xl:w-[800px] "
       >
         <h3 className="rounded mb-2 p-2 border font-semibold text-white bg-blue-800  flex items-center gap-2">
           <FaQuestionCircle size={36} />
@@ -298,6 +290,10 @@ const GPTtest = () => {
       </div>
     </div>
   );
+};
+
+GPTtest.defaultProps = {
+  onComplete: () => {}, // Varsayılan olarak boş bir fonksiyon
 };
 
 export default GPTtest;

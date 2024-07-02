@@ -466,3 +466,80 @@ object-fit: cover;
   width: 100%;
   object-fit: cover;
 }
+
+
+/* audip player  */
+/* General styles */
+.rhap_container {
+  box-shadow: none;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  max-width: 700px;
+  margin: auto;
+}
+
+/* Time and duration styles */
+.rhap_time,
+.rhap_current-time,
+.rhap_total-time {
+  color: #fff !important;
+
+  font-size: 12px;
+}
+
+/* Progress bar styles */
+.rhap_progress-bar {
+  background-color: #fff !important;
+  border-radius: 2px;
+  height: 8px;
+  margin: 0 10px;
+}
+
+.rhap_progress-filled {
+  background-color: #ff0000;
+  height: 100%;
+  border-radius: 2px;
+}
+
+/* Buttons styles */
+.rhap_button-clear {
+  color: #ff0000;
+  font-size: 20px;
+}
+
+
+
+.rhap_main-controls-button,
+.rhap_additional-controls-button {
+  color: #fff !important;
+  font-size: 16px;
+}
+
+.rhap_main-controls-button:hover,
+.rhap_additional-controls-button:hover {
+  color: #ff0000;
+}
+
+.rhap_volume-bar-area {
+  display: flex;
+  align-items: center;
+}
+
+.rhap_volume-bar {
+  background-color: #e6e6e6;
+  border-radius: 2px;
+  height: 8px;
+}
+
+.rhap_volume-indicator {
+  background-color: #ff0000;
+  height: 100%;
+  border-radius: 2px;
+}
+.rhap_container  button{
+  box-shadow: none;
+}
+
+
+/* audip player  */

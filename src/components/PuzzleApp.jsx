@@ -6,7 +6,7 @@ import { IoTimerOutline } from "react-icons/io5";
 import Confetti from "react-confetti";
 import { useQuestions } from "../context/QuestionContext";
 
-function PuzzleApp() {
+function PuzzleApp({ onComplete }) {
   const { currentQuestions } = useQuestions();
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [score, setScore] = useState(0);
@@ -67,11 +67,13 @@ function PuzzleApp() {
 
     if (completedPieces + 1 >= 9) {
       setShowResult(true);
+      onComplete(true); // Notify parent that the game is completed successfully
     } else if (currentQuestionIndex + 1 < currentQuestions.length) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
       setTimeLeft(30);
     } else {
       setShowResult(true);
+      onComplete(false); // Notify parent that the game is not completed successfully
     }
   };
 
@@ -112,5 +114,7 @@ function PuzzleApp() {
     </div>
   );
 }
-
+PuzzleApp.defaultProps = {
+  onComplete: () => {},
+};
 export default PuzzleApp;

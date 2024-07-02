@@ -61,6 +61,12 @@ const HeaderIlkogretim = () => {
           <span>Oyunlar</span>
         </button>
       </a>
+      <a href="/dialog">
+        <button className="bg-yellow-400 text-blue-800 font-bold py-3 px-6 rounded-full shadow-lg hover:bg-yellow-300 transform hover:scale-110 transition duration-300 ease-in-out flex gap-3 items-center h-[50px]">
+          <IoGameControllerOutline size={24} />
+          <span>Diyalog</span>
+        </button>
+      </a>
     </>
   );
 
