@@ -1,15 +1,12 @@
 import GPTtest from "../components/GPTtest";
-import HeaderIlkogretim from "../components/HeaderIlkogretim";
-import Layer from "../components/Layer";
+import Layout from "../layout/Layout";
 const PromptTest = () => {
   return (
-    <div>
-      <HeaderIlkogretim />
-      <Layer />
+    <Layout>
       <div className="mt-24">
         <GPTtest />
       </div>
-    </div>
+    </Layout>
   );
 };
 

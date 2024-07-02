@@ -6,8 +6,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { FcGoogle } from "react-icons/fc";
 import { Analytics } from "@vercel/analytics/react";
-import HeaderIlkogretim from "../components/HeaderIlkogretim";
-import Layer from "../components/Layer";
+import Layout from "../layout/Layout";
 
 const Register = () => {
   const { register, googleSignIn } = useAuth();
@@ -61,9 +60,7 @@ const Register = () => {
   };
 
   return (
-    <>
-      <HeaderIlkogretim />
-      <Layer />
+    <Layout>
       <div className=" mt-4 px-4 md:px-0 md:mt-32 items-center justify-center bg-login-image relative container mx-auto text-white">
         <Toaster position="top-center" reverseOrder={false} />
         <form
@@ -202,7 +199,7 @@ const Register = () => {
         </form>
       </div>
       <Analytics />
-    </>
+    </Layout>
   );
 };
 

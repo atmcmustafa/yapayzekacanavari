@@ -1,16 +1,13 @@
-import HeaderIlkogretim from "../components/HeaderIlkogretim";
-import Layer from "../components/Layer";
 import NewGame from "../components/NewGame";
+import Layout from "../layout/Layout";
 
 const BaloonPop = () => {
   return (
-    <div className="">
-      <HeaderIlkogretim />
-      <Layer />
+    <Layout className="">
       <div className="flex justify-center mt-8">
         <NewGame />
       </div>
-    </div>
+    </Layout>
   );
 };
 

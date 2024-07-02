@@ -9,6 +9,7 @@ import PublicRoute from "./components/PublicRoute.jsx";
 import ErrorPage from "./pages/ErrorPage.jsx";
 import { QuestionProvider } from "./context/QuestionContext.jsx";
 import { BalloonQuestionProvider } from "./context/BallonQuestionContext.jsx";
+import RobotDialog from "./pages/RobotDialog.jsx";
 
 const WelcomeGif = lazy(() => import("./pages/WelcomeGif.jsx"));
 const ScreenTablet = lazy(() => import("./pages/ScreenTablet.jsx"));
@@ -32,6 +33,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
             <Routes>
               <Route path="/" element={<WelcomeGif />} />
               <Route path="/home" element={<ScreenTablet />} />
+              <Route path="/dialog" element={<RobotDialog />} />
               <Route path="/gizlilik_sozlesmesi" element={<Terms />} />
               <Route path="/newGame" element={<NewGame />} />
               <Route path="/gameList" element={<GamesList />} />

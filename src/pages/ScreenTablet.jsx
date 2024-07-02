@@ -1,15 +1,13 @@
 import { useState } from "react";
-import HeaderIlkogretim from "../components/HeaderIlkogretim";
-import Game from "../components/Game";
 import GPTtest from "../components/GPTtest";
 import { Analytics } from "@vercel/analytics/react";
-import Layer from "../components/Layer";
 import AudioPlayer from "../components/AudioPlayer";
 import { FaArrowRight } from "react-icons/fa";
 import { BiInfoCircle } from "react-icons/bi";
 import { IoGameControllerOutline } from "react-icons/io5";
 import { FaArrowLeft } from "react-icons/fa";
 import NewGame from "../components/NewGame";
+import Layout from "../layout/Layout";
 
 const cardsData = [
   {
@@ -127,9 +125,7 @@ const ScreenTablet = () => {
   };
   console.log(activeCardId);
   return (
-    <div className="relative min-dvh-screen bg-skyWallpaper px-4 sm:px-0">
-      <Layer />
-      <HeaderIlkogretim />
+    <Layout className="relative min-dvh-screen bg-skyWallpaper px-4 sm:px-0">
       <div
         className={`text-white flex flex-col lg:flex-row ${
           showLessonText ? "gap-8" : "gap-0"
@@ -292,7 +288,7 @@ const ScreenTablet = () => {
         )}
       </div>
       <Analytics />
-    </div>
+    </Layout>
   );
 };
 

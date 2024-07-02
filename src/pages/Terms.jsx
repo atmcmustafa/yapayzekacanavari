@@ -1,7 +1,6 @@
 import { Analytics } from "@vercel/analytics/react";
-import HeaderIlkogretim from "../components/HeaderIlkogretim";
-import Layer from "../components/Layer";
 import { IoIosPaper } from "react-icons/io";
+import Layout from "../layout/Layout";
 
 const Terms = () => {
   const data = [
@@ -46,10 +45,7 @@ const Terms = () => {
   ];
 
   return (
-    <>
-      <HeaderIlkogretim />
-      <Layer />
-
+    <Layout>
       <div className="container mx-auto min-h-scren border mt-12 p-4">
         {data.map((item, index) => (
           <div className="" key={index}>
@@ -71,7 +67,7 @@ const Terms = () => {
         </a>
         <Analytics />
       </div>
-    </>
+    </Layout>
   );
 };
 

@@ -4,10 +4,8 @@ import { useState } from "react";
 import { useFormik } from "formik";
 import { FcGoogle } from "react-icons/fc";
 import toast, { Toaster } from "react-hot-toast";
-import Header from "../components/Header";
 import { Analytics } from "@vercel/analytics/react";
-import Layer from "../components/Layer";
-import HeaderIlkogretim from "../components/HeaderIlkogretim";
+import Layout from "../layout/Layout";
 
 const validate = (values) => {
   const errors = {};
@@ -63,9 +61,7 @@ const Login = () => {
   };
 
   return (
-    <>
-      <HeaderIlkogretim />
-      <Layer />
+    <Layout>
       <div className=" mt-4 px-4 md:px-0 md:mt-32 items-center justify-center bg-login-image relative container mx-auto text-white">
         <Toaster position="top-center" reverseOrder={false} />
         <form
@@ -182,7 +178,7 @@ const Login = () => {
         </form>
       </div>
       <Analytics />
-    </>
+    </Layout>
   );
 };
 

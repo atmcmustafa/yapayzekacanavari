@@ -1,11 +1,10 @@
-import HeaderIlkogretim from "../components/HeaderIlkogretim";
-import Layer from "../components/Layer";
 import PuzzleApp from "../components/PuzzleApp";
 import { useState } from "react";
 import { TiTick } from "react-icons/ti";
 import { SiFuturelearn } from "react-icons/si";
 import { IoTimerOutline } from "react-icons/io5";
 import GameMap from "../components/GameMap";
+import Layout from "../layout/Layout";
 const PuzzleRobot = () => {
   const [startedGame, setStartedGame] = useState(false);
 
@@ -39,10 +38,7 @@ const PuzzleRobot = () => {
   };
 
   return (
-    <div className="container mx-auto">
-      <HeaderIlkogretim />
-      <Layer />
-
+    <Layout className="container mx-auto">
       <div className="">
         {startedGame ? (
           <div className="flex flex-col items-center justify-center  lg:mt-24">
@@ -60,7 +56,7 @@ const PuzzleRobot = () => {
           </>
         )}
       </div>
-    </div>
+    </Layout>
   );
 };
 

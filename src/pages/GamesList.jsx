@@ -1,6 +1,5 @@
 import GameCard from "../components/GameCard";
-import HeaderIlkogretim from "../components/HeaderIlkogretim";
-import Layer from "../components/Layer";
+import Layout from "../layout/Layout";
 
 const gameListData = [
   {
@@ -70,9 +69,7 @@ const gameListData = [
 
 const GamesList = () => {
   return (
-    <div>
-      <HeaderIlkogretim />
-      <Layer />
+    <Layout>
       <div className="mt-12 container mx-auto grid grid-cols-2 md:grid-cols-2 xl:grid-cols-3 flex-wrap place-items-center justify-center items-center gap-8 px-4 sm:px-0 ">
         {gameListData.map((data) => (
           <GameCard
@@ -83,7 +80,7 @@ const GamesList = () => {
           />
         ))}
       </div>
-    </div>
+    </Layout>
   );
 };
 
