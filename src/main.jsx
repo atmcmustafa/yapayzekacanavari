@@ -22,6 +22,7 @@ const PromptTest = lazy(() => import("./pages/PromptTest.jsx"));
 const Login = lazy(() => import("./pages/Login.jsx"));
 const Register = lazy(() => import("./pages/Register.jsx"));
 const UserProfile = lazy(() => import("./pages/UserProfile.jsx"));
+const KidHomepage = lazy(() => import("./pages/KidHomepage.jsx"));
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <AuthProvider>
@@ -33,6 +34,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
             <Routes>
               <Route path="/" element={<WelcomeGif />} />
               <Route path="/home" element={<ScreenTablet />} />
+              <Route path="/kid" element={<KidHomepage />} />
               <Route path="/dialog" element={<RobotDialog />} />
               <Route path="/gizlilik_sozlesmesi" element={<Terms />} />
               <Route path="/newGame" element={<NewGame />} />
