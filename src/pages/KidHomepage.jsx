@@ -45,10 +45,10 @@ const KidHomepage = () => {
       </div>
       {showEnter && (
         <>
-          <div className="absolute left-48 top-1/2 -translate-y-1/2 h-64">
+          <div className="absolute left-48 top-1/2 -translate-y-1/2 h-24 lg:h-64">
             <img className="object-cover h-full" src={happyrobot} />
           </div>
-          <div className="absolute right-48 top-1/2 -translate-y-1/2 h-64">
+          <div className="absolute right-48 top-1/2 -translate-y-1/2 h-24 lg:h-64">
             <img className="object-cover h-full" src={kaykayrobot} />
           </div>
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
@@ -75,10 +75,9 @@ const KidHomepage = () => {
       )}
 
       {!showEnter && !showGame && (
-        <div className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2">
-          <div className="bg-[#FFA500] max-w-2xl rounded p-4 mb-4 mt-8 text-center text-white">
-            <h3 className=" font-semibold flex items-center">
-              <BiInfoCircle size={36} className="text-sm" />
+        <div className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 w-full px-8 lg:w-auto lg:px-0">
+          <div className="bg-[#FFA500] max-w-2xl w-full rounded p-4 mb-4 mt-8 text-center text-white">
+            <h3 className=" font-semibold flex items-center gap-2">
               <span className="text-lg">
                 Robotlarımızın yapay zeka hakkında sohbetini dinlemek için
                 'Dinlemeye Başla' tuşuna basman yeterli.
@@ -114,11 +113,11 @@ const KidHomepage = () => {
             </span>
           </button>
 
-          <div className="flex gap-24">
-            <div className="h-96">
+          <div className="flex gap-24 mx-auto justify-center">
+            <div className="h-32 lg:h-96">
               <img className="object-cover h-full" src={happyrobot} />
             </div>
-            <div className="h-96">
+            <div className="h-32 lg:h-96">
               <img className="object-cover h-full" src={kaykayrobot} />
             </div>
           </div>
