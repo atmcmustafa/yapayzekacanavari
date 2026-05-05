@@ -1,5 +1,4 @@
 import { initializeApp } from "firebase/app";
-// import { getAnalytics } from "firebase/analytics";
 import { GoogleAuthProvider, getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
@@ -14,22 +13,28 @@ const firebaseConfig = {
   measurementId: import.meta.env.VITE_MEASUREMENT_ID,
 };
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-// const analytics = getAnalytics(app);
+let app = null;
+let auth = null;
+let db = null;
+let storage = null;
+let googleAuthProvider = null;
 
-// firebase auth
-export const auth = getAuth(app);
-export const db = getFirestore(app);
-export const storage = getStorage(app);
+try {
+  app = initializeApp(firebaseConfig);
+  auth = getAuth(app);
+  db = getFirestore(app);
+  storage = getStorage(app);
+  googleAuthProvider = new GoogleAuthProvider();
+} catch (e) {
+  console.warn("Firebase initialization failed:", e.message);
+}
+
+export { auth, db, storage, googleAuthProvider };
 
 export const uploadProfilePicture = async (userId, file) => {
-  if (!file) return;
-
+  if (!file || !storage) return;
   const fileRef = ref(storage, `profilePictures/${userId}`);
   await uploadBytes(fileRef, file);
   const photoURL = await getDownloadURL(fileRef);
   return photoURL;
 };
-
-export const googleAuthProvider = new GoogleAuthProvider();

@@ -1,13 +1,13 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { auth, googleAuthProvider } from "../firebase-config";
 import {
-  createUserWithEmailAndPassword,
   onAuthStateChanged,
   signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
   signInWithPopup,
   signOut,
   updateProfile,
 } from "firebase/auth";
+import { auth, googleAuthProvider } from "../firebase-config";
 
 const AuthContext = createContext();
 
@@ -20,6 +20,10 @@ export function AuthProvider({ children }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    if (!auth) {
+      setLoading(false);
+      return;
+    }
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setCurrentUser(user);
       setLoading(false);
@@ -27,23 +31,25 @@ export function AuthProvider({ children }) {
     return unsubscribe;
   }, []);
 
-  function signIn(email, password) {
+  async function signIn(email, password) {
+    if (!auth) throw new Error("Auth not available");
     return signInWithEmailAndPassword(auth, email, password);
   }
 
   async function signUp(email, password, displayName) {
+    if (!auth) throw new Error("Auth not available");
     const result = await createUserWithEmailAndPassword(auth, email, password);
-    if (displayName) {
-      await updateProfile(result.user, { displayName });
-    }
+    if (displayName) await updateProfile(result.user, { displayName });
     return result;
   }
 
-  function signInWithGoogle() {
+  async function signInWithGoogleFn() {
+    if (!auth || !googleAuthProvider) throw new Error("Auth not available");
     return signInWithPopup(auth, googleAuthProvider);
   }
 
-  function signOutUser() {
+  async function signOutUser() {
+    if (!auth) return;
     return signOut(auth);
   }
 
@@ -52,7 +58,7 @@ export function AuthProvider({ children }) {
     loading,
     signIn,
     signUp,
-    signInWithGoogle,
+    signInWithGoogle: signInWithGoogleFn,
     signOutUser,
   };
 
